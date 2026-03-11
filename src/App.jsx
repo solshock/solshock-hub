@@ -233,11 +233,11 @@ function SpeakButton({ getText, label = "▶ Play", style = {} }) {
           border:`1.5px solid ${speaking||loading?T.gold:T.gold+"60"}`,
           background:speaking||loading?T.goldDim:"rgba(245,166,35,0.06)",
           color:speaking||loading?T.gold:T.text,
-          fontSize:12,fontFamily:"Georgia,serif",cursor:"pointer",
+          fontSize:16,fontFamily:"Georgia,serif",cursor:"pointer",
           transition:"all 0.15s",letterSpacing:0.5,fontWeight:speaking?"bold":"normal",
         }}
       >
-        <span style={{fontSize:14}}>{icon}</span>
+        <span style={{fontSize:18}}>{icon}</span>
         <span>{btnLabel}</span>
         {(speaking&&!paused)&&(
           <span style={{display:"flex",gap:2,alignItems:"center"}}>
@@ -249,7 +249,7 @@ function SpeakButton({ getText, label = "▶ Play", style = {} }) {
         <button onClick={stop} style={{
           padding:"9px 14px",borderRadius:20,
           border:`1.5px solid ${T.red}80`,background:`rgba(248,113,113,0.1)`,
-          color:T.red,fontSize:12,cursor:"pointer",fontFamily:"Georgia,serif",
+          color:T.red,fontSize:16,cursor:"pointer",fontFamily:"Georgia,serif",
         }}>■ Stop</button>
       )}
     </div>
@@ -311,14 +311,14 @@ function SummerAvatar({size=36,pulse=false}) {
 
 const fld = (multi) => ({
   width:"100%",background:"rgba(10,22,40,0.8)",border:`1px solid ${T.border}`,
-  borderRadius:8,padding:"10px 12px",color:T.text,fontSize:12,
+  borderRadius:8,padding:"10px 12px",color:T.text,fontSize:16,
   fontFamily:"Georgia,serif",boxSizing:"border-box",outline:"none",
   resize:multi?"vertical":undefined,WebkitAppearance:"none",
 });
 
 const Inp = ({label,value,onChange,placeholder,type="text",multi,rows=6,style={}}) => (
   <div style={{marginBottom:12}}>
-    {label&&<div style={{fontSize:10,color:T.textDim,letterSpacing:1.5,marginBottom:4,textTransform:"uppercase"}}>{label}</div>}
+    {label&&<div style={{fontSize:14,color:T.textDim,letterSpacing:1.5,marginBottom:4,textTransform:"uppercase"}}>{label}</div>}
     {multi
       ? <textarea value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder} rows={rows} style={{...fld(true),...style}}/>
       : <input value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder} type={type} style={{...fld(),...style}}/>}
@@ -327,7 +327,7 @@ const Inp = ({label,value,onChange,placeholder,type="text",multi,rows=6,style={}
 
 const Sel = ({label,value,onChange,options,style={}}) => (
   <div style={{marginBottom:12}}>
-    {label&&<div style={{fontSize:10,color:T.textDim,letterSpacing:1.5,marginBottom:4,textTransform:"uppercase"}}>{label}</div>}
+    {label&&<div style={{fontSize:14,color:T.textDim,letterSpacing:1.5,marginBottom:4,textTransform:"uppercase"}}>{label}</div>}
     <select value={value} onChange={e=>onChange(e.target.value)} style={{...fld(),...style}}>
       {options.map(o=><option key={o}>{o}</option>)}
     </select>
@@ -347,7 +347,7 @@ const Btn = ({children,onClick,variant="primary",style={},disabled=false}) => {
   return (
     <button onClick={onClick} disabled={disabled} style={{
       background:v.bg,border:`1px solid ${v.bc}`,color:v.c,
-      borderRadius:8,padding:"9px 16px",fontSize:12,fontFamily:"Georgia,serif",
+      borderRadius:8,padding:"9px 16px",fontSize:16,fontFamily:"Georgia,serif",
       cursor:disabled?"not-allowed":"pointer",letterSpacing:0.5,
       opacity:disabled?0.5:1,transition:"all 0.15s",...style,
     }}>{children}</button>
@@ -355,7 +355,7 @@ const Btn = ({children,onClick,variant="primary",style={},disabled=false}) => {
 };
 
 const Tag = ({children,color=T.gold}) => (
-  <span style={{fontSize:9,background:`${color}18`,border:`1px solid ${color}40`,color,borderRadius:4,padding:"2px 7px",letterSpacing:1,textTransform:"uppercase",whiteSpace:"nowrap"}}>{children}</span>
+  <span style={{fontSize:13,background:`${color}18`,border:`1px solid ${color}40`,color,borderRadius:4,padding:"2px 7px",letterSpacing:1,textTransform:"uppercase",whiteSpace:"nowrap"}}>{children}</span>
 );
 
 const Card = ({children,style={},accent,glow}) => (
@@ -364,14 +364,14 @@ const Card = ({children,style={},accent,glow}) => (
 
 const SecTitle = ({children,action}) => (
   <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-    <div style={{fontSize:14,color:T.gold,letterSpacing:2,textTransform:"uppercase",fontWeight:"bold"}}>{children}</div>
+    <div style={{fontSize:18,color:T.gold,letterSpacing:2,textTransform:"uppercase",fontWeight:"bold"}}>{children}</div>
     {action}
   </div>
 );
 
 function Toast({msg,type}) {
   return (
-    <div style={{position:"fixed",bottom:24,left:"50%",transform:"translateX(-50%)",background:type==="error"?"#3a0f0f":"#0f2a1a",border:`1px solid ${type==="error"?T.red:T.green}`,color:type==="error"?T.red:T.green,padding:"10px 24px",borderRadius:12,fontSize:12,zIndex:9999,letterSpacing:0.5,whiteSpace:"nowrap",pointerEvents:"none",boxShadow:`0 4px 24px rgba(0,0,0,0.4)`}}>{msg}</div>
+    <div style={{position:"fixed",bottom:24,left:"50%",transform:"translateX(-50%)",background:type==="error"?"#3a0f0f":"#0f2a1a",border:`1px solid ${type==="error"?T.red:T.green}`,color:type==="error"?T.red:T.green,padding:"10px 24px",borderRadius:12,fontSize:16,zIndex:9999,letterSpacing:0.5,whiteSpace:"nowrap",pointerEvents:"none",boxShadow:`0 4px 24px rgba(0,0,0,0.4)`}}>{msg}</div>
   );
 }
 
@@ -496,8 +496,8 @@ export default function App() {
   if (!loaded) return (
     <div style={{background:T.navy,minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column",gap:16}}>
       <SunLogo size={80}/>
-      <div style={{color:T.gold,fontSize:12,letterSpacing:3}}>LOADING SOLSHOCK HUB…</div>
-      <div style={{color:T.textDim,fontSize:10,letterSpacing:2}}>PHASE 6 · ALL SYSTEMS</div>
+      <div style={{color:T.gold,fontSize:16,letterSpacing:3}}>LOADING SOLSHOCK HUB…</div>
+      <div style={{color:T.textDim,fontSize:14,letterSpacing:2}}>PHASE 6 · ALL SYSTEMS</div>
     </div>
   );
 
@@ -529,18 +529,18 @@ export default function App() {
       <aside style={{width:side?224:60,minHeight:"100vh",background:`linear-gradient(180deg,${T.navyMid},${T.navy})`,borderRight:`1px solid ${T.border}`,display:"flex",flexDirection:"column",transition:"width 0.22s cubic-bezier(.4,0,.2,1)",overflow:"hidden",position:"sticky",top:0,height:"100vh",flexShrink:0,zIndex:50}}>
         <div style={{padding:"14px 10px",borderBottom:`1px solid ${T.border}`,display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={()=>setSide(o=>!o)}>
           <SunLogo size={34}/>
-          {side&&<div><div style={{fontSize:12,fontWeight:"bold",color:T.gold,letterSpacing:2}}>SOLSHOCK</div><div style={{fontSize:8,color:T.textDim,letterSpacing:1.5}}>BUSINESS HUB · P6</div></div>}
+          {side&&<div><div style={{fontSize:16,fontWeight:"bold",color:T.gold,letterSpacing:2}}>SOLSHOCK</div><div style={{fontSize:13,color:T.textDim,letterSpacing:1.5}}>BUSINESS HUB · P6</div></div>}
         </div>
         <nav style={{flex:1,padding:"8px 6px",overflowY:"auto"}}>
           {groupedNav.map(g=>(
             <div key={g.id} style={{marginBottom:4}}>
-              {side&&<div style={{fontSize:8,color:g.color,letterSpacing:2,padding:"8px 8px 4px",opacity:0.7}}>{g.label}</div>}
+              {side&&<div style={{fontSize:13,color:g.color,letterSpacing:2,padding:"8px 8px 4px",opacity:0.7}}>{g.label}</div>}
               {g.items.map(n=>{
                 const active=tab===n.id;
                 return (
-                  <button key={n.id} onClick={()=>setTab(n.id)} style={{width:"100%",display:"flex",alignItems:"center",gap:10,padding:side?"8px 10px":"10px 0",justifyContent:side?"flex-start":"center",borderRadius:8,border:"none",cursor:"pointer",marginBottom:1,background:active?T.goldDim:"transparent",borderLeft:active?`3px solid ${T.gold}`:"3px solid transparent",color:active?T.gold:T.textDim,transition:"all 0.12s",fontSize:12,fontFamily:"Georgia,serif"}}>
-                    <span style={{fontSize:15,lineHeight:1,flexShrink:0}}>{n.icon}</span>
-                    {side&&<span style={{fontSize:11,letterSpacing:0.3,overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{n.label}</span>}
+                  <button key={n.id} onClick={()=>setTab(n.id)} style={{width:"100%",display:"flex",alignItems:"center",gap:10,padding:side?"8px 10px":"10px 0",justifyContent:side?"flex-start":"center",borderRadius:8,border:"none",cursor:"pointer",marginBottom:1,background:active?T.goldDim:"transparent",borderLeft:active?`3px solid ${T.gold}`:"3px solid transparent",color:active?T.gold:T.textDim,transition:"all 0.12s",fontSize:16,fontFamily:"Georgia,serif"}}>
+                    <span style={{fontSize:17,lineHeight:1,flexShrink:0}}>{n.icon}</span>
+                    {side&&<span style={{fontSize:15,letterSpacing:0.3,overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{n.label}</span>}
                   </button>
                 );
               })}
@@ -551,9 +551,9 @@ export default function App() {
           <div style={{padding:"10px 14px",borderTop:`1px solid ${T.border}`}}>
             <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:4}}>
               <SummerAvatar size={22}/>
-              <div style={{fontSize:9,color:T.gold,letterSpacing:1}}>SUMMER AI ONLINE</div>
+              <div style={{fontSize:13,color:T.gold,letterSpacing:1}}>SUMMER AI ONLINE</div>
             </div>
-            <div style={{fontSize:8,color:T.green}}>● All data synced · Auto-save on</div>
+            <div style={{fontSize:13,color:T.green}}>● All data synced · Auto-save on</div>
           </div>
         )}
       </aside>
@@ -561,13 +561,13 @@ export default function App() {
       <main style={{flex:1,display:"flex",flexDirection:"column",minHeight:"100vh",overflow:"hidden"}}>
         <header style={{height:50,display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 22px",borderBottom:`1px solid ${T.border}`,background:T.navyMid,position:"sticky",top:0,zIndex:40,flexShrink:0}}>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <button onClick={()=>setSide(o=>!o)} style={{background:"none",border:"none",color:T.textDim,cursor:"pointer",fontSize:18,padding:4}}>☰</button>
-            <div style={{fontSize:12,color:T.text,letterSpacing:1}}>
+            <button onClick={()=>setSide(o=>!o)} style={{background:"none",border:"none",color:T.textDim,cursor:"pointer",fontSize:19,padding:4}}>☰</button>
+            <div style={{fontSize:16,color:T.text,letterSpacing:1}}>
               {NAV.find(n=>n.id===tab)?.icon} {NAV.find(n=>n.id===tab)?.label}
             </div>
           </div>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1}}>{new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1}}>{new Date().toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})}</div>
             <Tag color={T.green}>LIVE</Tag>
             <Tag color={T.blue}>P6</Tag>
           </div>
@@ -575,7 +575,7 @@ export default function App() {
 
         {/* ── QUICK LINKS BAR ── */}
         <div style={{display:"flex",alignItems:"center",gap:6,padding:"7px 22px",borderBottom:`1px solid ${T.border}`,background:`linear-gradient(90deg,${T.navyMid},${T.navy})`,flexShrink:0,flexWrap:"wrap"}}>
-          <span style={{fontSize:9,color:T.textMuted,letterSpacing:1.5,marginRight:4,flexShrink:0}}>QUICK</span>
+          <span style={{fontSize:13,color:T.textMuted,letterSpacing:1.5,marginRight:4,flexShrink:0}}>QUICK</span>
           {[
             {label:"📧 Gmail",        url:"https://mail.google.com/mail/u/0/#inbox"},
             {label:"📁 Drive",        url:"https://drive.google.com/drive/folders/1g0fUmW0eqDR0SbkTOJ2NEKfTGh_l45aJ"},
@@ -586,7 +586,7 @@ export default function App() {
           ].map(({label,url})=>(
             <a key={url} href={url} target="_blank" rel="noopener noreferrer"
               style={{
-                fontSize:10,padding:"3px 10px",borderRadius:12,
+                fontSize:14,padding:"3px 10px",borderRadius:12,
                 border:`1px solid ${T.border}`,
                 background:"rgba(245,166,35,0.05)",
                 color:T.textDim,textDecoration:"none",
@@ -599,7 +599,7 @@ export default function App() {
           ))}
         </div>
 
-        <div style={{flex:1,overflowY:"auto",padding:"22px 22px 60px",fontSize:12}}>
+        <div style={{flex:1,overflowY:"auto",padding:"22px 22px 60px",fontSize:16}}>
           {tab==="dashboard"  && <Dashboard {...allData} {...p}/>}
           {tab==="summer"     && <SummerChat {...allData} {...p}/>}
           {tab==="briefing"   && <Briefing tasks={tasks} inventory={inventory} orders={orders} revenue={revenue} settings={settings}/>}
@@ -697,7 +697,7 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
           border:`2px solid ${T.gold}`,
           boxShadow:`0 4px 24px rgba(245,166,35,0.5)`,
           cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center",
-          fontSize:26, transition:"all 0.2s",
+          fontSize:27, transition:"all 0.2s",
           animation: open ? "none" : "glowPulse 2.5s infinite",
         }}
         title="Chat with Summer"
@@ -708,7 +708,7 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
             position:"absolute", top:-4, right:-4,
             width:18, height:18, borderRadius:"50%",
             background:T.red, border:`2px solid ${T.navy}`,
-            fontSize:9, color:"white", display:"flex", alignItems:"center", justifyContent:"center",
+            fontSize:13, color:"white", display:"flex", alignItems:"center", justifyContent:"center",
             fontWeight:"bold"
           }}>{unread}</div>
         )}
@@ -731,8 +731,8 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
           <div style={{padding:"12px 16px", borderBottom:`1px solid ${T.border}`, background:T.navyMid, flexShrink:0, display:"flex", alignItems:"center", gap:10}}>
             <SummerAvatar size={32} pulse={loading}/>
             <div style={{flex:1}}>
-              <div style={{fontSize:13, fontWeight:"bold", color:T.gold}}>Summer AI</div>
-              <div style={{fontSize:9, color:loading?T.orange:T.green, letterSpacing:1}}>{loading?"● Thinking…":"● Online — always coastal"}</div>
+              <div style={{fontSize:17, fontWeight:"bold", color:T.gold}}>Summer AI</div>
+              <div style={{fontSize:13, color:loading?T.orange:T.green, letterSpacing:1}}>{loading?"● Thinking…":"● Online — always coastal"}</div>
             </div>
             <SpeakButton
               label="▶"
@@ -748,7 +748,7 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
           <div style={{padding:"8px 12px", borderBottom:`1px solid ${T.borderDim}`, display:"flex", gap:5, flexWrap:"wrap", flexShrink:0}}>
             {QUICK.map(q=>(
               <button key={q} onClick={()=>setInput(q)} style={{
-                fontSize:9, padding:"3px 8px", borderRadius:12,
+                fontSize:13, padding:"3px 8px", borderRadius:12,
                 border:`1px solid ${T.border}`, background:"transparent",
                 color:T.textDim, cursor:"pointer", fontFamily:"Georgia,serif",
                 transition:"all 0.12s",
@@ -769,7 +769,7 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
                   background: m.role==="user" ? T.goldDim : "rgba(15,31,61,0.9)",
                   border:`1px solid ${m.role==="user"?T.gold+"60":T.border}`,
                   borderRadius: m.role==="user" ? "12px 12px 4px 12px" : "12px 12px 12px 4px",
-                  fontSize:12, color:T.text, lineHeight:1.65, whiteSpace:"pre-wrap",
+                  fontSize:16, color:T.text, lineHeight:1.65, whiteSpace:"pre-wrap",
                 }}>{m.content}</div>
               </div>
             ))}
@@ -792,7 +792,7 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
               onChange={e=>setInput(e.target.value)}
               onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}}}
               placeholder="Ask Summer anything…"
-              style={{...fld(), flex:1, padding:"9px 12px", fontSize:12, borderRadius:10}}
+              style={{...fld(), flex:1, padding:"9px 12px", fontSize:16, borderRadius:10}}
             />
             <button
               onClick={send}
@@ -802,7 +802,7 @@ Active orders: ${orders.filter(o=>o.stage!=="Done").length}`;
                 border:`1px solid ${T.gold}`,
                 borderRadius:10, padding:"9px 14px",
                 cursor:input.trim()?"pointer":"not-allowed",
-                fontSize:16, opacity:loading?0.5:1,
+                fontSize:18, opacity:loading?0.5:1,
                 transition:"all 0.15s",
               }}
             >☀️</button>
@@ -834,11 +834,11 @@ function Dashboard({notes,expenses,tasks,inventory,orders,campaigns,revenue,goal
   return (
     <div>
       <div style={{display:"flex",alignItems:"center",gap:20,marginBottom:20,background:`linear-gradient(135deg,${T.navyMid},${T.navyLight})`,border:`1px solid ${T.border}`,borderRadius:18,padding:"20px 24px",flexWrap:"wrap",position:"relative",overflow:"hidden"}}>
-        <div style={{position:"absolute",top:-30,right:-30,opacity:0.03,fontSize:220}}>☀️</div>
+        <div style={{position:"absolute",top:-30,right:-30,opacity:0.03,fontSize:221}}>☀️</div>
         <SunLogo size={76}/>
         <div style={{flex:1}}>
-          <div style={{fontSize:20,fontWeight:"bold",color:T.gold,letterSpacing:3}}>{settings.storeName}</div>
-          <div style={{fontSize:11,color:T.textDim,marginTop:2}}>Coastal Clothing Co · Business Hub · Phase 6</div>
+          <div style={{fontSize:21,fontWeight:"bold",color:T.gold,letterSpacing:3}}>{settings.storeName}</div>
+          <div style={{fontSize:15,color:T.textDim,marginTop:2}}>Coastal Clothing Co · Business Hub · Phase 6</div>
           <div style={{display:"flex",gap:8,marginTop:10,flexWrap:"wrap"}}>
             <Tag color={T.green}>Day {daysSince} Live</Tag>
             <Tag color={profit>=0?T.green:T.red}>{profit>=0?"Profitable":"Watch spend"}</Tag>
@@ -846,8 +846,8 @@ function Dashboard({notes,expenses,tasks,inventory,orders,campaigns,revenue,goal
           </div>
         </div>
         <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
-          <button onClick={()=>setTab("summer")} style={{background:"linear-gradient(135deg,rgba(255,107,0,0.2),rgba(245,166,35,0.2))",border:`1px solid ${T.gold}`,color:T.gold,borderRadius:10,padding:"10px 14px",cursor:"pointer",fontFamily:"Georgia,serif",fontSize:11}}>🤖 Summer AI</button>
-          <button onClick={()=>setTab("briefing")} style={{background:T.goldDim,border:`1px solid ${T.gold}`,color:T.gold,borderRadius:10,padding:"10px 14px",cursor:"pointer",fontFamily:"Georgia,serif",fontSize:11}}>📰 Briefing</button>
+          <button onClick={()=>setTab("summer")} style={{background:"linear-gradient(135deg,rgba(255,107,0,0.2),rgba(245,166,35,0.2))",border:`1px solid ${T.gold}`,color:T.gold,borderRadius:10,padding:"10px 14px",cursor:"pointer",fontFamily:"Georgia,serif",fontSize:15}}>🤖 Summer AI</button>
+          <button onClick={()=>setTab("briefing")} style={{background:T.goldDim,border:`1px solid ${T.gold}`,color:T.gold,borderRadius:10,padding:"10px 14px",cursor:"pointer",fontFamily:"Georgia,serif",fontSize:15}}>📰 Briefing</button>
         </div>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:10,marginBottom:16}}>
@@ -855,31 +855,31 @@ function Dashboard({notes,expenses,tasks,inventory,orders,campaigns,revenue,goal
           <button key={s.label} onClick={()=>setTab(s.tab)} style={{background:T.surface,border:`1px solid ${s.color}28`,borderRadius:12,padding:"14px 12px",cursor:"pointer",textAlign:"left",fontFamily:"Georgia,serif",transition:"all 0.18s"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor=s.color}
             onMouseLeave={e=>e.currentTarget.style.borderColor=`${s.color}28`}>
-            <div style={{fontSize:20,marginBottom:7}}>{s.icon}</div>
-            <div style={{fontSize:19,fontWeight:"bold",color:s.color}}>{s.val}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginTop:2}}>{s.label.toUpperCase()}</div>
-            <div style={{fontSize:10,color:s.color,marginTop:4,opacity:0.7}}>{s.sub}</div>
+            <div style={{fontSize:21,marginBottom:7}}>{s.icon}</div>
+            <div style={{fontSize:20,fontWeight:"bold",color:s.color}}>{s.val}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginTop:2}}>{s.label.toUpperCase()}</div>
+            <div style={{fontSize:14,color:s.color,marginTop:4,opacity:0.7}}>{s.sub}</div>
           </button>
         ))}
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:14}}>
         <Card accent={`rgba(74,222,128,0.25)`} glow={T.green}>
           <SecTitle>🎯 Revenue Goal</SecTitle>
-          <div style={{fontSize:11,color:T.textDim,marginBottom:8}}>{fmt$(totalRev)} of {fmt$(revenueGoal)} goal</div>
+          <div style={{fontSize:15,color:T.textDim,marginBottom:8}}>{fmt$(totalRev)} of {fmt$(revenueGoal)} goal</div>
           <div style={{height:10,background:"rgba(255,255,255,0.06)",borderRadius:5,overflow:"hidden",marginBottom:8}}>
             <div style={{width:`${goalPct}%`,height:"100%",background:`linear-gradient(90deg,${T.green},${T.teal})`,borderRadius:5,transition:"width 0.6s"}}/>
           </div>
           <div style={{display:"flex",justifyContent:"space-between"}}>
-            <span style={{fontSize:11,color:T.green,fontWeight:"bold"}}>{goalPct}% complete</span>
-            <span style={{fontSize:10,color:T.textDim}}>{fmt$(revenueGoal-totalRev)} remaining</span>
+            <span style={{fontSize:15,color:T.green,fontWeight:"bold"}}>{goalPct}% complete</span>
+            <span style={{fontSize:14,color:T.textDim}}>{fmt$(revenueGoal-totalRev)} remaining</span>
           </div>
           {goals.slice(0,2).map(g=>{
             const pct=Math.min((parseFloat(g.current)/parseFloat(g.target))*100,100);
             return (
               <div key={g.id} style={{marginTop:10}}>
                 <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
-                  <span style={{fontSize:10,color:T.textDim}}>{g.name}</span>
-                  <span style={{fontSize:10,color:g.color}}>{g.current}/{g.target}{g.unit==="$"?"":g.unit}</span>
+                  <span style={{fontSize:14,color:T.textDim}}>{g.name}</span>
+                  <span style={{fontSize:14,color:g.color}}>{g.current}/{g.target}{g.unit==="$"?"":g.unit}</span>
                 </div>
                 <div style={{height:5,background:"rgba(255,255,255,0.06)",borderRadius:3}}>
                   <div style={{width:`${pct}%`,height:"100%",background:g.color,borderRadius:3}}/>
@@ -892,9 +892,9 @@ function Dashboard({notes,expenses,tasks,inventory,orders,campaigns,revenue,goal
           <SecTitle>⏱️ Next Drop</SecTitle>
           {nextDrop
             ? <CountdownWidget drop={nextDrop}/>
-            : <div style={{textAlign:"center",padding:"20px 0",color:T.textDim,fontSize:12}}>
+            : <div style={{textAlign:"center",padding:"20px 0",color:T.textDim,fontSize:16}}>
                 No upcoming drops scheduled.<br/>
-                <button onClick={()=>setTab("drops")} style={{background:"none",border:"none",color:T.blue,cursor:"pointer",fontSize:11,marginTop:8,fontFamily:"Georgia,serif"}}>+ Schedule a Drop →</button>
+                <button onClick={()=>setTab("drops")} style={{background:"none",border:"none",color:T.blue,cursor:"pointer",fontSize:15,marginTop:8,fontFamily:"Georgia,serif"}}>+ Schedule a Drop →</button>
               </div>
           }
         </Card>
@@ -902,11 +902,11 @@ function Dashboard({notes,expenses,tasks,inventory,orders,campaigns,revenue,goal
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
         <Card>
           <SecTitle>📦 Low Stock Alerts</SecTitle>
-          {lowStock.length===0&&<div style={{color:T.textDim,fontSize:12}}>All stock healthy ✓</div>}
+          {lowStock.length===0&&<div style={{color:T.textDim,fontSize:16}}>All stock healthy ✓</div>}
           {lowStock.map(i=>(
             <div key={i.id} style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
-              <div><div style={{fontSize:11,color:T.text}}>{i.name} {i.size}</div><div style={{fontSize:9,color:T.textDim}}>{i.sku}</div></div>
-              <div style={{fontSize:14,fontWeight:"bold",color:T.red}}>{i.qty}</div>
+              <div><div style={{fontSize:15,color:T.text}}>{i.name} {i.size}</div><div style={{fontSize:13,color:T.textDim}}>{i.sku}</div></div>
+              <div style={{fontSize:18,fontWeight:"bold",color:T.red}}>{i.qty}</div>
             </div>
           ))}
         </Card>
@@ -917,8 +917,8 @@ function Dashboard({notes,expenses,tasks,inventory,orders,campaigns,revenue,goal
               const count=orders.filter(o=>o.stage===s).length;
               return (
                 <div key={s} style={{flex:1,minWidth:60,background:`${STAGE_COLORS[s]}12`,border:`1px solid ${STAGE_COLORS[s]}35`,borderRadius:8,padding:"10px 6px",textAlign:"center"}}>
-                  <div style={{fontSize:16,fontWeight:"bold",color:STAGE_COLORS[s]}}>{count}</div>
-                  <div style={{fontSize:8,color:T.textDim,letterSpacing:1,marginTop:2}}>{s.toUpperCase()}</div>
+                  <div style={{fontSize:18,fontWeight:"bold",color:STAGE_COLORS[s]}}>{count}</div>
+                  <div style={{fontSize:13,color:T.textDim,letterSpacing:1,marginTop:2}}>{s.toUpperCase()}</div>
                 </div>
               );
             })}
@@ -942,16 +942,16 @@ function CountdownWidget({drop}) {
     const t=setInterval(calc,1000);
     return()=>clearInterval(t);
   },[drop]);
-  if(timeLeft.expired) return <div style={{color:T.orange,fontSize:12,textAlign:"center"}}>🔴 Drop is LIVE!</div>;
+  if(timeLeft.expired) return <div style={{color:T.orange,fontSize:16,textAlign:"center"}}>🔴 Drop is LIVE!</div>;
   return (
     <div>
-      <div style={{fontSize:12,fontWeight:"bold",color:T.blue,marginBottom:4}}>{drop.name}</div>
-      <div style={{fontSize:10,color:T.textDim,marginBottom:12}}>{drop.collection} · {drop.date} at {drop.time}</div>
+      <div style={{fontSize:16,fontWeight:"bold",color:T.blue,marginBottom:4}}>{drop.name}</div>
+      <div style={{fontSize:14,color:T.textDim,marginBottom:12}}>{drop.collection} · {drop.date} at {drop.time}</div>
       <div style={{display:"flex",gap:8,justifyContent:"center"}}>
         {[["d","DAYS"],["h","HRS"],["m","MIN"],["s","SEC"]].map(([k,label])=>(
           <div key={k} style={{textAlign:"center",background:"rgba(59,130,246,0.1)",border:`1px solid ${T.blue}40`,borderRadius:10,padding:"10px 12px",minWidth:48}}>
-            <div style={{fontSize:22,fontWeight:"bold",color:T.blue,fontFamily:"monospace",animation:k==="s"?"tickPulse 1s infinite":undefined}}>{String(timeLeft[k]||0).padStart(2,"0")}</div>
-            <div style={{fontSize:8,color:T.textDim,letterSpacing:1.5}}>{label}</div>
+            <div style={{fontSize:23,fontWeight:"bold",color:T.blue,fontFamily:"monospace",animation:k==="s"?"tickPulse 1s infinite":undefined}}>{String(timeLeft[k]||0).padStart(2,"0")}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5}}>{label}</div>
           </div>
         ))}
       </div>
@@ -993,15 +993,15 @@ function SummerChat({revenue,expenses,tasks,inventory,orders,goals,settings}) {
         <div style={{display:"flex",alignItems:"center",gap:14}}>
           <SummerAvatar size={48} pulse={loading}/>
           <div style={{flex:1}}>
-            <div style={{fontSize:16,fontWeight:"bold",color:T.gold}}>Summer AI</div>
-            <div style={{fontSize:11,color:T.textDim}}>Your SOLSHOCK business partner · Knows your entire operation</div>
+            <div style={{fontSize:18,fontWeight:"bold",color:T.gold}}>Summer AI</div>
+            <div style={{fontSize:15,color:T.textDim}}>Your SOLSHOCK business partner · Knows your entire operation</div>
           </div>
-          <div style={{textAlign:"right"}}><Tag color={T.green}>Online</Tag><div style={{fontSize:9,color:T.textDim,marginTop:4}}>Powered by Claude</div></div>
+          <div style={{textAlign:"right"}}><Tag color={T.green}>Online</Tag><div style={{fontSize:13,color:T.textDim,marginTop:4}}>Powered by Claude</div></div>
         </div>
       </Card>
       <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12,flexShrink:0}}>
         {QUICK.map(q=>(
-          <button key={q} onClick={()=>setInput(q)} style={{padding:"4px 10px",borderRadius:20,border:`1px solid ${T.border}`,background:"transparent",color:T.textDim,fontSize:10,cursor:"pointer",fontFamily:"Georgia,serif",transition:"all 0.12s"}}
+          <button key={q} onClick={()=>setInput(q)} style={{padding:"4px 10px",borderRadius:20,border:`1px solid ${T.border}`,background:"transparent",color:T.textDim,fontSize:14,cursor:"pointer",fontFamily:"Georgia,serif",transition:"all 0.12s"}}
             onMouseEnter={e=>{e.currentTarget.style.borderColor=T.gold;e.currentTarget.style.color=T.gold;}}
             onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.color=T.textDim;}}
           >{q}</button>
@@ -1011,8 +1011,8 @@ function SummerChat({revenue,expenses,tasks,inventory,orders,goals,settings}) {
         {messages.map((m,i)=>(
           <div key={i} style={{display:"flex",gap:10,alignItems:"flex-start",flexDirection:m.role==="user"?"row-reverse":"row",animation:"fadeInUp 0.2s ease"}}>
             {m.role==="assistant"&&<SummerAvatar size={30}/>}
-            {m.role==="user"&&<div style={{width:30,height:30,borderRadius:"50%",background:T.goldDim,border:`1px solid ${T.border}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,flexShrink:0}}>{settings.ownerName?.[0]||"M"}</div>}
-            <div style={{maxWidth:"75%",padding:"12px 14px",background:m.role==="user"?T.goldDim:T.surface,border:`1px solid ${m.role==="user"?T.gold+"50":T.border}`,borderRadius:m.role==="user"?"12px 12px 4px 12px":"12px 12px 12px 4px",fontSize:12,color:T.text,lineHeight:1.7,whiteSpace:"pre-wrap"}}>{m.content}</div>
+            {m.role==="user"&&<div style={{width:30,height:30,borderRadius:"50%",background:T.goldDim,border:`1px solid ${T.border}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:18,flexShrink:0}}>{settings.ownerName?.[0]||"M"}</div>}
+            <div style={{maxWidth:"75%",padding:"12px 14px",background:m.role==="user"?T.goldDim:T.surface,border:`1px solid ${m.role==="user"?T.gold+"50":T.border}`,borderRadius:m.role==="user"?"12px 12px 4px 12px":"12px 12px 12px 4px",fontSize:16,color:T.text,lineHeight:1.7,whiteSpace:"pre-wrap"}}>{m.content}</div>
           </div>
         ))}
         {loading&&(
@@ -1028,7 +1028,7 @@ function SummerChat({revenue,expenses,tasks,inventory,orders,goals,settings}) {
       {/* ── Speak + Input bar — always visible ── */}
       <div style={{flexShrink:0,display:"flex",flexDirection:"column",gap:8,paddingTop:8,borderTop:`1px solid ${T.border}`}}>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
-          <span style={{fontSize:10,color:T.textDim,letterSpacing:1}}>🔊</span>
+          <span style={{fontSize:14,color:T.textDim,letterSpacing:1}}>🔊</span>
           <SpeakButton
             label="▶ Play Summer's Response"
             getText={()=>{
@@ -1038,8 +1038,8 @@ function SummerChat({revenue,expenses,tasks,inventory,orders,goals,settings}) {
           />
         </div>
         <div style={{display:"flex",gap:8}}>
-          <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}}} placeholder="Ask Summer anything about your business…" style={{...fld(),flex:1,padding:"12px 16px",fontSize:12}}/>
-          <Btn onClick={send} disabled={loading||!input.trim()} variant="summer" style={{padding:"12px 20px",fontSize:12}}>☀️ Send</Btn>
+          <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}}} placeholder="Ask Summer anything about your business…" style={{...fld(),flex:1,padding:"12px 16px",fontSize:16}}/>
+          <Btn onClick={send} disabled={loading||!input.trim()} variant="summer" style={{padding:"12px 20px",fontSize:16}}>☀️ Send</Btn>
         </div>
       </div>
     </div>
@@ -1139,8 +1139,8 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
     <div style={{display:"flex",gap:8,justifyContent:"center",marginTop:8}}>
       {BRIEF_SECTIONS.map((s,i)=>(
         <div key={s.key} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:4,opacity:0.6,animation:`tickPulse 1.5s ${i*0.15}s infinite`}}>
-          <div style={{fontSize:18}}>{s.key}</div>
-          <div style={{fontSize:7,color:s.color,letterSpacing:1}}>{s.label.toUpperCase()}</div>
+          <div style={{fontSize:19}}>{s.key}</div>
+          <div style={{fontSize:8,color:s.color,letterSpacing:1}}>{s.label.toUpperCase()}</div>
         </div>
       ))}
     </div>
@@ -1153,12 +1153,12 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
         <div style={{display:"flex",alignItems:"center",gap:20,flexWrap:"wrap"}}>
           <SunLogo size={60}/>
           <div style={{flex:1}}>
-            <div style={{fontSize:18,fontWeight:"bold",color:T.gold,letterSpacing:3}}>☀️ DAILY BRIEFING</div>
-            <div style={{fontSize:11,color:T.textDim,marginTop:2}}>{new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})}</div>
-            {lastGen&&<div style={{fontSize:10,color:T.green,marginTop:4}}>● Live · Generated {lastGen} · Web search active</div>}
+            <div style={{fontSize:19,fontWeight:"bold",color:T.gold,letterSpacing:3}}>☀️ DAILY BRIEFING</div>
+            <div style={{fontSize:15,color:T.textDim,marginTop:2}}>{new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})}</div>
+            {lastGen&&<div style={{fontSize:14,color:T.green,marginTop:4}}>● Live · Generated {lastGen} · Web search active</div>}
           </div>
           <div style={{display:"flex",flexDirection:"column",gap:8,alignItems:"flex-end"}}>
-            <Btn onClick={generate} disabled={loading} style={{fontSize:12,padding:"12px 24px",animation:!briefing&&!loading?"glowPulse 2s infinite":undefined}}>
+            <Btn onClick={generate} disabled={loading} style={{fontSize:16,padding:"12px 24px",animation:!briefing&&!loading?"glowPulse 2s infinite":undefined}}>
               {loading?"⏳ Searching web…":"☀️ Generate Briefing"}
             </Btn>
             <SpeakButton
@@ -1174,8 +1174,8 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
           <div style={{display:"flex",gap:6,marginTop:16,flexWrap:"wrap"}}>
             {BRIEF_SECTIONS.map(s=>(
               <button key={s.key} onClick={()=>briefing&&scrollTo(s.key)}
-                style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${activeSection===s.key?s.color:`${s.color}40`}`,background:activeSection===s.key?`${s.color}20`:"transparent",color:activeSection===s.key?s.color:T.textDim,fontSize:10,cursor:briefing?"pointer":"default",fontFamily:"Georgia,serif",transition:"all 0.15s",display:"flex",alignItems:"center",gap:4}}>
-                <span style={{fontSize:12}}>{s.key}</span>
+                style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${activeSection===s.key?s.color:`${s.color}40`}`,background:activeSection===s.key?`${s.color}20`:"transparent",color:activeSection===s.key?s.color:T.textDim,fontSize:14,cursor:briefing?"pointer":"default",fontFamily:"Georgia,serif",transition:"all 0.15s",display:"flex",alignItems:"center",gap:4}}>
+                <span style={{fontSize:16}}>{s.key}</span>
                 <span>{s.label}</span>
               </button>
             ))}
@@ -1186,8 +1186,8 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
       {/* Loading state */}
       {loading&&(
         <Card style={{textAlign:"center",padding:"40px 24px"}}>
-          <div style={{fontSize:12,color:T.gold,letterSpacing:1,marginBottom:4}}>🌐 Searching the web for today's intel…</div>
-          <div style={{fontSize:11,color:T.textDim,marginBottom:20}}>Fashion · Financial Markets · Trump Policy Watch · Coastal Vibes</div>
+          <div style={{fontSize:16,color:T.gold,letterSpacing:1,marginBottom:4}}>🌐 Searching the web for today's intel…</div>
+          <div style={{fontSize:15,color:T.textDim,marginBottom:20}}>Fashion · Financial Markets · Trump Policy Watch · Coastal Vibes</div>
           <LoadingDots/>
           <div style={{marginTop:20,height:3,background:`linear-gradient(90deg,${T.navy},${T.gold},${T.blue},${T.gold},${T.navy})`,borderRadius:3,backgroundSize:"200% 100%",animation:"shimmer 2s linear infinite"}}/>
         </Card>
@@ -1201,8 +1201,8 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
         return (
           <div key={sec.key} ref={el=>sectionRefs.current[sec.key]=el}
             style={{background:cfg.bg,border:`1px solid ${cfg.color}30`,borderRadius:14,padding:"18px 20px",marginBottom:10,animation:"fadeInUp 0.3s ease",scrollMarginTop:20}}>
-            <div style={{fontSize:12,fontWeight:"bold",color:cfg.color,letterSpacing:1.5,marginBottom:12,paddingBottom:10,borderBottom:`1px solid ${cfg.color}20`,display:"flex",alignItems:"center",gap:8}}>
-              <span style={{fontSize:18}}>{sec.key}</span>
+            <div style={{fontSize:16,fontWeight:"bold",color:cfg.color,letterSpacing:1.5,marginBottom:12,paddingBottom:10,borderBottom:`1px solid ${cfg.color}20`,display:"flex",alignItems:"center",gap:8}}>
+              <span style={{fontSize:19}}>{sec.key}</span>
               <span>{sec.header.replace(sec.key,"").trim()}</span>
             </div>
             {isAction
@@ -1215,7 +1215,7 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
                     </div>
                   );
                 })}</div>
-              : <div style={{fontSize:12,color:T.text,lineHeight:1.9,whiteSpace:"pre-wrap"}}>{bodyText}</div>
+              : <div style={{fontSize:16,color:T.text,lineHeight:1.9,whiteSpace:"pre-wrap"}}>{bodyText}</div>
             }
           </div>
         );
@@ -1224,24 +1224,24 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
       {/* Raw fallback if parsing failed */}
       {briefing&&parsedSections.length===0&&(
         <Card>
-          <div style={{fontSize:12,color:T.text,lineHeight:1.85,whiteSpace:"pre-wrap"}}>{briefing}</div>
+          <div style={{fontSize:16,color:T.text,lineHeight:1.85,whiteSpace:"pre-wrap"}}>{briefing}</div>
         </Card>
       )}
 
       {/* Empty state */}
       {!briefing&&!loading&&(
         <Card style={{textAlign:"center",padding:52}}>
-          <div style={{fontSize:52,marginBottom:14}}>📰</div>
-          <div style={{color:T.text,fontSize:14,fontWeight:"bold",marginBottom:6}}>Your Daily Intelligence Briefing</div>
-          <div style={{color:T.textDim,fontSize:12,marginBottom:20,lineHeight:1.7}}>Hit Generate and Summer searches the live web for<br/>everything relevant to SOLSHOCK — updated daily.</div>
+          <div style={{fontSize:54,marginBottom:14}}>📰</div>
+          <div style={{color:T.text,fontSize:18,fontWeight:"bold",marginBottom:6}}>Your Daily Intelligence Briefing</div>
+          <div style={{color:T.textDim,fontSize:16,marginBottom:20,lineHeight:1.7}}>Hit Generate and Summer searches the live web for<br/>everything relevant to SOLSHOCK — updated daily.</div>
           <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",marginBottom:24}}>
             {BRIEF_SECTIONS.map(s=>(
-              <div key={s.key} style={{fontSize:10,color:s.color,background:`${s.color}12`,border:`1px solid ${s.color}30`,borderRadius:8,padding:"6px 12px",display:"flex",alignItems:"center",gap:4}}>
+              <div key={s.key} style={{fontSize:14,color:s.color,background:`${s.color}12`,border:`1px solid ${s.color}30`,borderRadius:8,padding:"6px 12px",display:"flex",alignItems:"center",gap:4}}>
                 <span>{s.key}</span><span>{s.label}</span>
               </div>
             ))}
           </div>
-          <Btn onClick={generate} style={{fontSize:12,padding:"12px 32px",animation:"glowPulse 2s infinite"}}>☀️ Generate Today's Briefing</Btn>
+          <Btn onClick={generate} style={{fontSize:16,padding:"12px 32px",animation:"glowPulse 2s infinite"}}>☀️ Generate Today's Briefing</Btn>
         </Card>
       )}
     </div>
@@ -1269,20 +1269,20 @@ function GoalTracker({goals,setGoals,revenue,orders,showToast}) {
           return (
             <Card key={g.id} accent={`${g.color}40`} glow={done?g.color:undefined}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
-                <div style={{fontSize:12,fontWeight:"bold",color:T.text}}>{g.name}</div>
-                <button onClick={()=>del(g.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:T.textDim}}>✕</button>
+                <div style={{fontSize:16,fontWeight:"bold",color:T.text}}>{g.name}</div>
+                <button onClick={()=>del(g.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16,color:T.textDim}}>✕</button>
               </div>
-              <div style={{fontSize:26,fontWeight:"bold",color:g.color,marginBottom:4}}>{g.unit==="$"?fmt$(g.current):`${g.current}${g.unit}`}</div>
-              <div style={{fontSize:10,color:T.textDim,marginBottom:10}}>of {g.unit==="$"?fmt$(g.target):`${g.target}${g.unit}`} goal</div>
+              <div style={{fontSize:27,fontWeight:"bold",color:g.color,marginBottom:4}}>{g.unit==="$"?fmt$(g.current):`${g.current}${g.unit}`}</div>
+              <div style={{fontSize:14,color:T.textDim,marginBottom:10}}>of {g.unit==="$"?fmt$(g.target):`${g.target}${g.unit}`} goal</div>
               <div style={{height:8,background:"rgba(255,255,255,0.06)",borderRadius:4,overflow:"hidden",marginBottom:8}}>
                 <div style={{width:`${pct}%`,height:"100%",background:g.color,borderRadius:4,transition:"width 0.5s"}}/>
               </div>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                <span style={{fontSize:11,color:g.color,fontWeight:"bold"}}>{pct.toFixed(0)}%</span>
+                <span style={{fontSize:15,color:g.color,fontWeight:"bold"}}>{pct.toFixed(0)}%</span>
                 {done&&<Tag color={T.green}>COMPLETE ✓</Tag>}
-                {g.deadline&&<span style={{fontSize:9,color:T.textDim}}>📅 {g.deadline}</span>}
+                {g.deadline&&<span style={{fontSize:13,color:T.textDim}}>📅 {g.deadline}</span>}
               </div>
-              <input type="number" value={g.current} onChange={e=>update(g.id,e.target.value)} style={{...fld(),marginTop:10,fontSize:12,padding:"6px 10px"}} placeholder="Update progress…"/>
+              <input type="number" value={g.current} onChange={e=>update(g.id,e.target.value)} style={{...fld(),marginTop:10,fontSize:16,padding:"6px 10px"}} placeholder="Update progress…"/>
             </Card>
           );
         })}
@@ -1296,7 +1296,7 @@ function GoalTracker({goals,setGoals,revenue,orders,showToast}) {
           <Inp label="Current" value={form.current} onChange={v=>setForm(p=>({...p,current:v}))} type="number" placeholder="0"/>
           <Inp label="Deadline" value={form.deadline} onChange={v=>setForm(p=>({...p,deadline:v}))} type="date"/>
           <div style={{marginBottom:12}}>
-            <div style={{fontSize:10,color:T.textDim,letterSpacing:1.5,marginBottom:6,textTransform:"uppercase"}}>Color</div>
+            <div style={{fontSize:14,color:T.textDim,letterSpacing:1.5,marginBottom:6,textTransform:"uppercase"}}>Color</div>
             <div style={{display:"flex",gap:8}}>{COLORS.map(c=><button key={c} onClick={()=>setForm(p=>({...p,color:c}))} style={{width:24,height:24,borderRadius:"50%",background:c,border:`2px solid ${form.color===c?"white":"transparent"}`,cursor:"pointer"}}/>)}</div>
           </div>
         </div>
@@ -1334,27 +1334,27 @@ function Reports({revenue,expenses,orders,tasks,inventory,settings,showToast}) {
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:20}}>
         {[{l:"Revenue",v:fmt$(totalRev),c:T.green},{l:"Expenses",v:fmt$(totalExp),c:T.red},{l:"Profit",v:fmt$(profit),c:profit>=0?T.green:T.red},{l:"Margin",v:`${margin}%`,c:parseFloat(margin)>=30?T.green:T.orange}].map(s=>(
           <div key={s.l} style={{background:T.surface,border:`1px solid ${s.c}30`,borderRadius:10,padding:"12px",textAlign:"center"}}>
-            <div style={{fontSize:18,fontWeight:"bold",color:s.c}}>{s.v}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginTop:2}}>{s.l.toUpperCase()}</div>
+            <div style={{fontSize:19,fontWeight:"bold",color:s.c}}>{s.v}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginTop:2}}>{s.l.toUpperCase()}</div>
           </div>
         ))}
       </div>
       <Card style={{marginBottom:16,textAlign:"center"}}>
-        <div style={{fontSize:14,color:T.gold,fontWeight:"bold",marginBottom:8}}>📋 AI Business Report Generator</div>
-        <div style={{fontSize:11,color:T.textDim,marginBottom:16}}>One button — full executive report with analysis and next steps</div>
-        <Btn onClick={generateReport} disabled={loading} style={{fontSize:12,padding:"12px 28px"}}>{loading?"⏳ Generating Report…":"📊 Generate Full Report"}</Btn>
+        <div style={{fontSize:18,color:T.gold,fontWeight:"bold",marginBottom:8}}>📋 AI Business Report Generator</div>
+        <div style={{fontSize:15,color:T.textDim,marginBottom:16}}>One button — full executive report with analysis and next steps</div>
+        <Btn onClick={generateReport} disabled={loading} style={{fontSize:16,padding:"12px 28px"}}>{loading?"⏳ Generating Report…":"📊 Generate Full Report"}</Btn>
       </Card>
-      {loading&&<Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:10}}>📊</div><div style={{color:T.gold,fontSize:12}}>Analyzing your business data…</div></Card>}
+      {loading&&<Card style={{textAlign:"center",padding:40}}><div style={{fontSize:33,marginBottom:10}}>📊</div><div style={{color:T.gold,fontSize:16}}>Analyzing your business data…</div></Card>}
       {report&&(
         <Card>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-            <div style={{fontSize:11,color:T.gold,letterSpacing:2}}>BUSINESS REPORT · {new Date().toLocaleDateString()}</div>
+            <div style={{fontSize:15,color:T.gold,letterSpacing:2}}>BUSINESS REPORT · {new Date().toLocaleDateString()}</div>
             <div style={{display:"flex",gap:8}}>
-              <Btn onClick={copyReport} variant="secondary" style={{fontSize:10,padding:"6px 12px"}}>📋 Copy</Btn>
-              <Btn onClick={()=>setReport(null)} variant="ghost" style={{fontSize:10,padding:"6px 12px"}}>Clear</Btn>
+              <Btn onClick={copyReport} variant="secondary" style={{fontSize:14,padding:"6px 12px"}}>📋 Copy</Btn>
+              <Btn onClick={()=>setReport(null)} variant="ghost" style={{fontSize:14,padding:"6px 12px"}}>Clear</Btn>
             </div>
           </div>
-          <div style={{fontSize:12,color:T.text,lineHeight:1.85,whiteSpace:"pre-wrap"}}>{report}</div>
+          <div style={{fontSize:16,color:T.text,lineHeight:1.85,whiteSpace:"pre-wrap"}}>{report}</div>
         </Card>
       )}
     </div>
@@ -1383,7 +1383,7 @@ function ShopifyDash({settings,showToast}) {
     <div style={{maxWidth:800}}>
       <Card style={{marginBottom:20}}>
         <SecTitle>🛍️ Shopify Intelligence</SecTitle>
-        <div style={{fontSize:11,color:T.textDim,marginBottom:16}}>Enter your store URL for AI-powered optimization recommendations</div>
+        <div style={{fontSize:15,color:T.textDim,marginBottom:16}}>Enter your store URL for AI-powered optimization recommendations</div>
         <div style={{display:"flex",gap:10}}>
           <input value={storeUrl} onChange={e=>setStoreUrl(e.target.value)} placeholder="yourstore.myshopify.com" style={{...fld(),flex:1}}/>
           <Btn onClick={analyze} disabled={loading}>{loading?"⏳ Analyzing…":"🔍 Analyze"}</Btn>
@@ -1394,7 +1394,7 @@ function ShopifyDash({settings,showToast}) {
           <SecTitle>📱 Shopify Apps for SOLSHOCK</SecTitle>
           {[{name:"Judge.me",cat:"Reviews",desc:"Best free review app"},{name:"Klaviyo",cat:"Email",desc:"Email automation king"},{name:"Loox",cat:"Social Proof",desc:"Photo reviews"},{name:"Yotpo",cat:"Loyalty",desc:"Points & rewards"},{name:"Gorgias",cat:"Support",desc:"Customer support hub"}].map(app=>(
             <div key={app.name} style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8,paddingBottom:8,borderBottom:`1px solid ${T.borderDim}`}}>
-              <div><div style={{fontSize:12,color:T.text,fontWeight:"bold"}}>{app.name}</div><div style={{fontSize:10,color:T.textDim}}>{app.desc}</div></div>
+              <div><div style={{fontSize:16,color:T.text,fontWeight:"bold"}}>{app.name}</div><div style={{fontSize:14,color:T.textDim}}>{app.desc}</div></div>
               <Tag color={T.blue}>{app.cat}</Tag>
             </div>
           ))}
@@ -1403,14 +1403,14 @@ function ShopifyDash({settings,showToast}) {
           <SecTitle>📊 DTC Benchmarks</SecTitle>
           {[{metric:"Apparel CVR",value:"1.5–3%",color:T.green},{metric:"Email Open Rate",value:"18–25%",color:T.blue},{metric:"Cart Abandonment",value:"~70%",color:T.orange},{metric:"Avg Order Value",value:"$45–65",color:T.gold},{metric:"Return Customer Rate",value:"25–35%",color:T.purple}].map(b=>(
             <div key={b.metric} style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
-              <span style={{fontSize:11,color:T.textDim}}>{b.metric}</span>
-              <span style={{fontSize:12,fontWeight:"bold",color:b.color}}>{b.value}</span>
+              <span style={{fontSize:15,color:T.textDim}}>{b.metric}</span>
+              <span style={{fontSize:16,fontWeight:"bold",color:b.color}}>{b.value}</span>
             </div>
           ))}
         </Card>
       </div>
-      {loading&&<Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:10}}>🔍</div><div style={{color:T.gold,fontSize:12}}>Analyzing + searching for recommendations…</div></Card>}
-      {analysis&&<Card><SecTitle>🛍️ AI Store Analysis</SecTitle><div style={{fontSize:12,color:T.text,lineHeight:1.85,whiteSpace:"pre-wrap"}}>{analysis}</div></Card>}
+      {loading&&<Card style={{textAlign:"center",padding:40}}><div style={{fontSize:33,marginBottom:10}}>🔍</div><div style={{color:T.gold,fontSize:16}}>Analyzing + searching for recommendations…</div></Card>}
+      {analysis&&<Card><SecTitle>🛍️ AI Store Analysis</SecTitle><div style={{fontSize:16,color:T.text,lineHeight:1.85,whiteSpace:"pre-wrap"}}>{analysis}</div></Card>}
     </div>
   );
 }
@@ -1443,37 +1443,37 @@ function DropTimers({drops,setDrops,showToast}) {
       </Card>
       {upcoming.length>0&&(
         <div style={{marginBottom:20}}>
-          <div style={{fontSize:10,color:T.gold,letterSpacing:2,marginBottom:12}}>UPCOMING DROPS — LIVE COUNTDOWNS</div>
+          <div style={{fontSize:14,color:T.gold,letterSpacing:2,marginBottom:12}}>UPCOMING DROPS — LIVE COUNTDOWNS</div>
           {upcoming.map(drop=>(
             <Card key={drop.id} accent={`${T.blue}40`} glow={T.blue}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
-                <div><div style={{fontSize:15,fontWeight:"bold",color:T.text,marginBottom:4}}>{drop.name}</div><div style={{display:"flex",gap:6}}><Tag color={T.blue}>{drop.collection}</Tag><Tag color={T.green}>LIVE COUNTDOWN</Tag></div></div>
+                <div><div style={{fontSize:17,fontWeight:"bold",color:T.text,marginBottom:4}}>{drop.name}</div><div style={{display:"flex",gap:6}}><Tag color={T.blue}>{drop.collection}</Tag><Tag color={T.green}>LIVE COUNTDOWN</Tag></div></div>
                 <div style={{display:"flex",gap:6}}>
-                  <button onClick={()=>toggle(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:T.textDim}}>⏸</button>
-                  <button onClick={()=>del(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:T.textDim}}>🗑️</button>
+                  <button onClick={()=>toggle(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16,color:T.textDim}}>⏸</button>
+                  <button onClick={()=>del(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16,color:T.textDim}}>🗑️</button>
                 </div>
               </div>
               <CountdownWidget drop={drop}/>
-              {drop.desc&&<div style={{fontSize:11,color:T.textDim,marginTop:12,fontStyle:"italic"}}>{drop.desc}</div>}
+              {drop.desc&&<div style={{fontSize:15,color:T.textDim,marginTop:12,fontStyle:"italic"}}>{drop.desc}</div>}
             </Card>
           ))}
         </div>
       )}
       {past.length>0&&(
         <div>
-          <div style={{fontSize:10,color:T.textDim,letterSpacing:2,marginBottom:10}}>PAST / INACTIVE DROPS</div>
+          <div style={{fontSize:14,color:T.textDim,letterSpacing:2,marginBottom:10}}>PAST / INACTIVE DROPS</div>
           {past.map(drop=>(
             <div key={drop.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",background:T.surface,border:`1px solid ${T.borderDim}`,borderRadius:10,padding:"10px 14px",marginBottom:8,opacity:0.6}}>
-              <div><div style={{fontSize:12,color:T.textDim}}>{drop.name}</div><div style={{fontSize:9,color:T.textMuted}}>{drop.date} at {drop.time}</div></div>
+              <div><div style={{fontSize:16,color:T.textDim}}>{drop.name}</div><div style={{fontSize:13,color:T.textMuted}}>{drop.date} at {drop.time}</div></div>
               <div style={{display:"flex",gap:6}}>
-                <button onClick={()=>toggle(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:11,color:T.blue,fontFamily:"Georgia,serif"}}>Reactivate</button>
-                <button onClick={()=>del(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:T.textDim}}>🗑️</button>
+                <button onClick={()=>toggle(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:15,color:T.blue,fontFamily:"Georgia,serif"}}>Reactivate</button>
+                <button onClick={()=>del(drop.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16,color:T.textDim}}>🗑️</button>
               </div>
             </div>
           ))}
         </div>
       )}
-      {drops.length===0&&<Card style={{textAlign:"center",padding:48}}><div style={{fontSize:48,marginBottom:12}}>⏱️</div><div style={{color:T.textDim,fontSize:12}}>No drops scheduled yet. Schedule a vault drop to start the countdown. 🌊</div></Card>}
+      {drops.length===0&&<Card style={{textAlign:"center",padding:48}}><div style={{fontSize:54,marginBottom:12}}>⏱️</div><div style={{color:T.textDim,fontSize:16}}>No drops scheduled yet. Schedule a vault drop to start the countdown. 🌊</div></Card>}
     </div>
   );
 }
@@ -1512,8 +1512,8 @@ function ContentPlanner({posts,setPosts,showToast}) {
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:20}}>
         {byStat.map(({s,count})=>(
           <div key={s} style={{background:T.surface,border:`1px solid ${SC[s]}30`,borderRadius:10,padding:"12px",textAlign:"center"}}>
-            <div style={{fontSize:20,fontWeight:"bold",color:SC[s]}}>{count}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5}}>{s.toUpperCase()}</div>
+            <div style={{fontSize:21,fontWeight:"bold",color:SC[s]}}>{count}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5}}>{s.toUpperCase()}</div>
           </div>
         ))}
       </div>
@@ -1544,14 +1544,14 @@ function ContentPlanner({posts,setPosts,showToast}) {
               {post.collection&&<Tag color={T.gold}>{post.collection}</Tag>}
             </div>
             <div style={{display:"flex",gap:6,alignItems:"center"}}>
-              {post.date&&<span style={{fontSize:9,color:T.textDim}}>📅 {post.date} {post.time}</span>}
-              <button onClick={()=>del(post.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12,color:T.textDim}}>🗑️</button>
+              {post.date&&<span style={{fontSize:13,color:T.textDim}}>📅 {post.date} {post.time}</span>}
+              <button onClick={()=>del(post.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16,color:T.textDim}}>🗑️</button>
             </div>
           </div>
-          <div style={{fontSize:12,color:T.text,lineHeight:1.7,marginBottom:10,whiteSpace:"pre-wrap"}}>{post.caption}</div>
+          <div style={{fontSize:16,color:T.text,lineHeight:1.7,marginBottom:10,whiteSpace:"pre-wrap"}}>{post.caption}</div>
           <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-            {STATUSES.filter(s=>s!==post.status).map(s=><button key={s} onClick={()=>upStatus(post.id,s)} style={{fontSize:9,padding:"2px 8px",borderRadius:4,border:`1px solid ${SC[s]}50`,background:`${SC[s]}10`,color:SC[s],cursor:"pointer",fontFamily:"Georgia,serif"}}>→ {s}</button>)}
-            <button onClick={async()=>{try{await navigator.clipboard.writeText(post.caption);showToast("Caption copied ✓");}catch{}}} style={{fontSize:9,padding:"2px 8px",borderRadius:4,border:`1px solid ${T.border}`,background:"transparent",color:T.textDim,cursor:"pointer",fontFamily:"Georgia,serif"}}>📋 Copy</button>
+            {STATUSES.filter(s=>s!==post.status).map(s=><button key={s} onClick={()=>upStatus(post.id,s)} style={{fontSize:13,padding:"2px 8px",borderRadius:4,border:`1px solid ${SC[s]}50`,background:`${SC[s]}10`,color:SC[s],cursor:"pointer",fontFamily:"Georgia,serif"}}>→ {s}</button>)}
+            <button onClick={async()=>{try{await navigator.clipboard.writeText(post.caption);showToast("Caption copied ✓");}catch{}}} style={{fontSize:13,padding:"2px 8px",borderRadius:4,border:`1px solid ${T.border}`,background:"transparent",color:T.textDim,cursor:"pointer",fontFamily:"Georgia,serif"}}>📋 Copy</button>
           </div>
         </Card>
       ))}
@@ -1594,7 +1594,7 @@ function BlackBook({contacts,setContacts,showToast}) {
         {["All",...ROLES].map(r=>{
           const count=r==="All"?contacts.length:contacts.filter(c=>c.role===r).length;
           if(r!=="All"&&count===0) return null;
-          return <div key={r} style={{background:T.surface,border:`1px solid ${ROLE_COLORS[r]||T.gold}30`,borderRadius:8,padding:"10px 8px",textAlign:"center",cursor:"pointer"}} onClick={()=>setRoleFilter(r)}><div style={{fontSize:16,fontWeight:"bold",color:ROLE_COLORS[r]||T.gold}}>{count}</div><div style={{fontSize:8,color:T.textDim,letterSpacing:1}}>{r.toUpperCase()}</div></div>;
+          return <div key={r} style={{background:T.surface,border:`1px solid ${ROLE_COLORS[r]||T.gold}30`,borderRadius:8,padding:"10px 8px",textAlign:"center",cursor:"pointer"}} onClick={()=>setRoleFilter(r)}><div style={{fontSize:18,fontWeight:"bold",color:ROLE_COLORS[r]||T.gold}}>{count}</div><div style={{fontSize:13,color:T.textDim,letterSpacing:1}}>{r.toUpperCase()}</div></div>;
         })}
       </div>
       <div style={{display:"grid",gridTemplateColumns:selected?"1fr 1fr":"1fr",gap:16}}>
@@ -1615,31 +1615,31 @@ function BlackBook({contacts,setContacts,showToast}) {
           </Card>
           {filtered.map(c=>(
             <div key={c.id} onClick={()=>setSelected(selected?.id===c.id?null:c)} style={{display:"flex",gap:12,alignItems:"center",background:selected?.id===c.id?T.goldDim:T.surface,border:`1px solid ${selected?.id===c.id?T.gold:T.borderDim}`,borderRadius:10,padding:"12px 14px",marginBottom:8,cursor:"pointer",transition:"all 0.15s"}}>
-              <div style={{width:36,height:36,borderRadius:"50%",background:`${ROLE_COLORS[c.role]||T.gold}20`,border:`2px solid ${ROLE_COLORS[c.role]||T.gold}50`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:15,flexShrink:0}}>{c.name[0]}</div>
+              <div style={{width:36,height:36,borderRadius:"50%",background:`${ROLE_COLORS[c.role]||T.gold}20`,border:`2px solid ${ROLE_COLORS[c.role]||T.gold}50`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:17,flexShrink:0}}>{c.name[0]}</div>
               <div style={{flex:1,overflow:"hidden"}}>
-                <div style={{fontSize:12,color:T.text,fontWeight:"bold"}}>{c.name}</div>
+                <div style={{fontSize:16,color:T.text,fontWeight:"bold"}}>{c.name}</div>
                 <div style={{display:"flex",gap:6,marginTop:3,flexWrap:"wrap"}}><Tag color={ROLE_COLORS[c.role]||T.gold}>{c.role}</Tag>{c.tags&&c.tags.split(",").slice(0,2).map(t=><Tag key={t} color={T.textDim}>{t.trim()}</Tag>)}</div>
               </div>
-              {c.email&&<div style={{fontSize:10,color:T.textDim,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",maxWidth:160}}>{c.email}</div>}
+              {c.email&&<div style={{fontSize:14,color:T.textDim,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",maxWidth:160}}>{c.email}</div>}
             </div>
           ))}
         </div>
         {selected&&(
           <div>
             <div style={{display:"flex",justifyContent:"space-between",marginBottom:12}}>
-              <div style={{fontSize:10,color:T.gold,letterSpacing:2}}>CONTACT DETAIL</div>
+              <div style={{fontSize:14,color:T.gold,letterSpacing:2}}>CONTACT DETAIL</div>
               <button onClick={()=>{setSelected(null);setAiNote("");}} style={{background:"none",border:"none",color:T.textDim,cursor:"pointer"}}>✕</button>
             </div>
             <Card>
               <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:16}}>
-                <div style={{width:52,height:52,borderRadius:"50%",background:`${ROLE_COLORS[selected.role]||T.gold}20`,border:`2px solid ${ROLE_COLORS[selected.role]||T.gold}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:22}}>{selected.name[0]}</div>
-                <div><div style={{fontSize:16,fontWeight:"bold",color:T.text}}>{selected.name}</div><Tag color={ROLE_COLORS[selected.role]||T.gold}>{selected.role}</Tag></div>
+                <div style={{width:52,height:52,borderRadius:"50%",background:`${ROLE_COLORS[selected.role]||T.gold}20`,border:`2px solid ${ROLE_COLORS[selected.role]||T.gold}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:23}}>{selected.name[0]}</div>
+                <div><div style={{fontSize:18,fontWeight:"bold",color:T.text}}>{selected.name}</div><Tag color={ROLE_COLORS[selected.role]||T.gold}>{selected.role}</Tag></div>
               </div>
-              {selected.email&&<div style={{fontSize:12,color:T.textDim,marginBottom:6}}>📧 {selected.email}</div>}
-              {selected.phone&&<div style={{fontSize:12,color:T.textDim,marginBottom:6}}>📱 {selected.phone}</div>}
-              {selected.lastContact&&<div style={{fontSize:12,color:T.textDim,marginBottom:6}}>📅 Last contact: {selected.lastContact}</div>}
+              {selected.email&&<div style={{fontSize:16,color:T.textDim,marginBottom:6}}>📧 {selected.email}</div>}
+              {selected.phone&&<div style={{fontSize:16,color:T.textDim,marginBottom:6}}>📱 {selected.phone}</div>}
+              {selected.lastContact&&<div style={{fontSize:16,color:T.textDim,marginBottom:6}}>📅 Last contact: {selected.lastContact}</div>}
               {selected.tags&&<div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:10}}>{selected.tags.split(",").map(t=><Tag key={t} color={T.blue}>{t.trim()}</Tag>)}</div>}
-              {selected.notes&&<div style={{fontSize:12,color:T.text,lineHeight:1.7,background:"rgba(10,22,40,0.5)",padding:12,borderRadius:8,marginBottom:12}}>{selected.notes}</div>}
+              {selected.notes&&<div style={{fontSize:16,color:T.text,lineHeight:1.7,background:"rgba(10,22,40,0.5)",padding:12,borderRadius:8,marginBottom:12}}>{selected.notes}</div>}
               <div style={{display:"flex",gap:8,marginTop:4}}>
                 <Btn onClick={()=>generateOutreach(selected)} disabled={aiLoading} style={{flex:1}} variant="summer">{aiLoading?"⏳ Writing…":"✍️ Draft Outreach"}</Btn>
                 <Btn onClick={()=>del(selected.id)} variant="danger">🗑️</Btn>
@@ -1688,7 +1688,7 @@ function EmailWriter({showToast}) {
         <SecTitle>📧 Summer Email Writer</SecTitle>
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16,padding:12,background:"rgba(245,166,35,0.06)",borderRadius:8,border:`1px solid ${T.border}`}}>
           <SummerAvatar size={32}/>
-          <div style={{fontSize:12,color:T.textDim}}>Summer writes every email in SOLSHOCK voice. Pick the type and describe your context.</div>
+          <div style={{fontSize:16,color:T.textDim}}>Summer writes every email in SOLSHOCK voice. Pick the type and describe your context.</div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
           <Sel label="Email Type" value={form.type} onChange={v=>setForm(p=>({...p,type:v}))} options={EMAIL_TYPES}/>
@@ -1697,20 +1697,20 @@ function EmailWriter({showToast}) {
           <Inp label="Suggested Subject (optional)" value={form.subject} onChange={v=>setForm(p=>({...p,subject:v}))} placeholder="Leave blank for AI to generate"/>
         </div>
         <Inp label="Context / Key Details" value={form.context} onChange={v=>setForm(p=>({...p,context:v}))} placeholder="What's this email about? Order #1001, drop on April 15th, collaboration offer…" multi rows={3}/>
-        <Btn onClick={generate} disabled={loading} style={{width:"100%",fontSize:12,padding:"12px"}}>{loading?"⏳ Writing…":"📧 Write Email"}</Btn>
+        <Btn onClick={generate} disabled={loading} style={{width:"100%",fontSize:16,padding:"12px"}}>{loading?"⏳ Writing…":"📧 Write Email"}</Btn>
       </Card>
-      {loading&&<Card style={{textAlign:"center",padding:32}}><SummerAvatar size={40} pulse/><div style={{color:T.gold,fontSize:12,marginTop:12}}>Writing in SOLSHOCK voice…</div></Card>}
+      {loading&&<Card style={{textAlign:"center",padding:32}}><SummerAvatar size={40} pulse/><div style={{color:T.gold,fontSize:16,marginTop:12}}>Writing in SOLSHOCK voice…</div></Card>}
       {parts&&(
         <div>
           <Card accent={`${T.blue}40`}>
-            <div style={{fontSize:10,color:T.textDim,letterSpacing:1.5,marginBottom:6}}>SUBJECT LINE</div>
-            <div style={{fontSize:15,fontWeight:"bold",color:T.text,marginBottom:10}}>{parts.subject}</div>
-            {parts.preview&&<div style={{fontSize:10,color:T.textDim}}>Preview: <span style={{color:T.gold}}>{parts.preview}</span></div>}
+            <div style={{fontSize:14,color:T.textDim,letterSpacing:1.5,marginBottom:6}}>SUBJECT LINE</div>
+            <div style={{fontSize:17,fontWeight:"bold",color:T.text,marginBottom:10}}>{parts.subject}</div>
+            {parts.preview&&<div style={{fontSize:14,color:T.textDim}}>Preview: <span style={{color:T.gold}}>{parts.preview}</span></div>}
           </Card>
           <Card>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
-              <div style={{fontSize:10,color:T.gold,letterSpacing:2}}>EMAIL BODY</div>
-              <Btn onClick={async()=>{try{await navigator.clipboard.writeText(`Subject: ${parts.subject}\n\n${parts.body}`);showToast("Copied ✓");}catch{}}} variant="secondary" style={{fontSize:10,padding:"4px 12px"}}>📋 Copy All</Btn>
+              <div style={{fontSize:14,color:T.gold,letterSpacing:2}}>EMAIL BODY</div>
+              <Btn onClick={async()=>{try{await navigator.clipboard.writeText(`Subject: ${parts.subject}\n\n${parts.body}`);showToast("Copied ✓");}catch{}}} variant="secondary" style={{fontSize:14,padding:"4px 12px"}}>📋 Copy All</Btn>
             </div>
             <textarea value={parts.body} onChange={e=>setResult(result.replace(parts.body,e.target.value))} rows={12} style={{...fld(true),lineHeight:1.7}}/>
           </Card>
@@ -1723,9 +1723,9 @@ function EmailWriter({showToast}) {
             <button key={t.type} onClick={()=>setForm(p=>({...p,type:t.type}))} style={{background:T.surface,border:`1px solid ${T.border}`,borderRadius:8,padding:"10px 8px",cursor:"pointer",textAlign:"center",fontFamily:"Georgia,serif",transition:"all 0.12s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor=T.gold}
               onMouseLeave={e=>e.currentTarget.style.borderColor=T.border}>
-              <div style={{fontSize:20,marginBottom:4}}>{t.icon}</div>
-              <div style={{fontSize:10,color:T.text,fontWeight:"bold"}}>{t.type}</div>
-              <div style={{fontSize:9,color:T.textDim}}>{t.desc}</div>
+              <div style={{fontSize:21,marginBottom:4}}>{t.icon}</div>
+              <div style={{fontSize:14,color:T.text,fontWeight:"bold"}}>{t.type}</div>
+              <div style={{fontSize:13,color:T.textDim}}>{t.desc}</div>
             </button>
           ))}
         </div>
@@ -1760,7 +1760,7 @@ function CopyAI({showToast}) {
       <Card>
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}>
           <SummerAvatar size={32}/>
-          <div><div style={{fontSize:12,fontWeight:"bold",color:T.gold}}>Copy AI</div><div style={{fontSize:10,color:T.textDim}}>Product descriptions, captions, email copy — all in SOLSHOCK voice</div></div>
+          <div><div style={{fontSize:16,fontWeight:"bold",color:T.gold}}>Copy AI</div><div style={{fontSize:14,color:T.textDim}}>Product descriptions, captions, email copy — all in SOLSHOCK voice</div></div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
           <Inp label="Product Name" value={form.product} onChange={v=>setForm(p=>({...p,product:v}))} placeholder="Night Mode Tee"/>
@@ -1768,19 +1768,19 @@ function CopyAI({showToast}) {
         </div>
         <Inp label="Key Details" value={form.features} onChange={v=>setForm(p=>({...p,features:v}))} placeholder="100% cotton, relaxed fit, front crest graphic…"/>
         <Inp label="Vibe / Notes" value={form.vibe} onChange={v=>setForm(p=>({...p,vibe:v}))} placeholder="bold coastal lifestyle"/>
-        <Btn onClick={generate} disabled={loading} style={{width:"100%",fontSize:12,padding:"12px"}}>{loading?"⏳ Writing…":"⚡ Generate SOLSHOCK Copy"}</Btn>
+        <Btn onClick={generate} disabled={loading} style={{width:"100%",fontSize:16,padding:"12px"}}>{loading?"⏳ Writing…":"⚡ Generate SOLSHOCK Copy"}</Btn>
       </Card>
-      {loading&&<Card style={{textAlign:"center",padding:32}}><div style={{fontSize:28,marginBottom:10}}>✍️</div><div style={{color:T.gold,fontSize:12}}>Writing in SOLSHOCK voice…</div></Card>}
+      {loading&&<Card style={{textAlign:"center",padding:32}}><div style={{fontSize:29,marginBottom:10}}>✍️</div><div style={{color:T.gold,fontSize:16}}>Writing in SOLSHOCK voice…</div></Card>}
       {sections.map((s,i)=>{
         const lines=s.trim().split("\n").filter(l=>l.trim());
         const body=lines.slice(1).join("\n").trim();
         return (
           <Card key={i}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-              <div style={{fontSize:12,fontWeight:"bold",color:T.gold}}>{lines[0]}</div>
-              <Btn onClick={()=>copy(body)} variant="ghost" style={{fontSize:10,padding:"4px 10px"}}>Copy</Btn>
+              <div style={{fontSize:16,fontWeight:"bold",color:T.gold}}>{lines[0]}</div>
+              <Btn onClick={()=>copy(body)} variant="ghost" style={{fontSize:14,padding:"4px 10px"}}>Copy</Btn>
             </div>
-            <div style={{fontSize:12,color:T.text,lineHeight:1.8,whiteSpace:"pre-wrap"}}>{body}</div>
+            <div style={{fontSize:16,color:T.text,lineHeight:1.8,whiteSpace:"pre-wrap"}}>{body}</div>
           </Card>
         );
       })}
@@ -1790,8 +1790,8 @@ function CopyAI({showToast}) {
           <SecTitle>🕒 Recent</SecTitle>
           {history.map(h=>(
             <div key={h.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:`1px solid ${T.borderDim}`,paddingBottom:8,marginBottom:8}}>
-              <div><div style={{fontSize:12,color:T.text}}>{h.product}</div><div style={{display:"flex",gap:6,marginTop:2}}><Tag color={T.blue}>{h.collection}</Tag><span style={{fontSize:9,color:T.textDim}}>{h.date}</span></div></div>
-              <Btn onClick={()=>setResult(h.output)} variant="ghost" style={{fontSize:10,padding:"4px 10px"}}>View</Btn>
+              <div><div style={{fontSize:16,color:T.text}}>{h.product}</div><div style={{display:"flex",gap:6,marginTop:2}}><Tag color={T.blue}>{h.collection}</Tag><span style={{fontSize:13,color:T.textDim}}>{h.date}</span></div></div>
+              <Btn onClick={()=>setResult(h.output)} variant="ghost" style={{fontSize:14,padding:"4px 10px"}}>View</Btn>
             </div>
           ))}
         </Card>
@@ -1822,8 +1822,8 @@ function Revenue({revenue,setRevenue,expenses,goals,showToast}) {
       <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:20}}>
         {[{l:"Total Revenue",v:fmt$(totalRev),c:T.green},{l:"Net Profit",v:fmt$(profit),c:profit>=0?T.green:T.red},{l:"Margin",v:`${margin}%`,c:parseFloat(margin)>=30?T.green:T.orange}].map(s=>(
           <div key={s.l} style={{background:T.surface,border:`1px solid ${s.c}30`,borderRadius:12,padding:"16px",textAlign:"center"}}>
-            <div style={{fontSize:24,fontWeight:"bold",color:s.c}}>{s.v}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginTop:4}}>{s.l.toUpperCase()}</div>
+            <div style={{fontSize:25,fontWeight:"bold",color:s.c}}>{s.v}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginTop:4}}>{s.l.toUpperCase()}</div>
           </div>
         ))}
       </div>
@@ -1832,20 +1832,20 @@ function Revenue({revenue,setRevenue,expenses,goals,showToast}) {
           <SecTitle>💵 By Source</SecTitle>
           {bySource.map(({source,total})=>(
             <div key={source} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
-              <div style={{fontSize:11,color:T.textDim,width:80,flexShrink:0}}>{source}</div>
+              <div style={{fontSize:15,color:T.textDim,width:80,flexShrink:0}}>{source}</div>
               <div style={{flex:1,height:5,background:"rgba(255,255,255,0.06)",borderRadius:3}}><div style={{width:`${(total/totalRev)*100}%`,height:"100%",background:T.green,borderRadius:3}}/></div>
-              <div style={{fontSize:11,color:T.green,width:70,textAlign:"right"}}>{fmt$(total)}</div>
+              <div style={{fontSize:15,color:T.green,width:70,textAlign:"right"}}>{fmt$(total)}</div>
             </div>
           ))}
-          {bySource.length===0&&<div style={{color:T.textDim,fontSize:12}}>No revenue logged yet.</div>}
+          {bySource.length===0&&<div style={{color:T.textDim,fontSize:16}}>No revenue logged yet.</div>}
         </Card>
         <Card>
           <SecTitle>🌊 By Collection</SecTitle>
           {byColl.map(({col,total})=>(
             <div key={col} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
-              <div style={{fontSize:11,color:T.textDim,width:80,flexShrink:0}}>{col}</div>
+              <div style={{fontSize:15,color:T.textDim,width:80,flexShrink:0}}>{col}</div>
               <div style={{flex:1,height:5,background:"rgba(255,255,255,0.06)",borderRadius:3}}><div style={{width:`${(total/totalRev)*100}%`,height:"100%",background:T.gold,borderRadius:3}}/></div>
-              <div style={{fontSize:11,color:T.gold,width:70,textAlign:"right"}}>{fmt$(total)}</div>
+              <div style={{fontSize:15,color:T.gold,width:70,textAlign:"right"}}>{fmt$(total)}</div>
             </div>
           ))}
         </Card>
@@ -1863,9 +1863,9 @@ function Revenue({revenue,setRevenue,expenses,goals,showToast}) {
       </Card>
       {revenue.map(r=>(
         <div key={r.id} style={{display:"flex",alignItems:"center",gap:12,background:T.surface,border:`1px solid rgba(74,222,128,0.12)`,borderRadius:10,padding:"10px 14px",marginBottom:8}}>
-          <div style={{flex:1}}><div style={{fontSize:12,color:T.text}}>{r.desc}</div><div style={{display:"flex",gap:8,marginTop:3}}><Tag color={T.blue}>{r.source}</Tag><Tag color={T.purple}>{r.collection}</Tag><span style={{fontSize:9,color:T.textDim}}>{r.date}</span></div></div>
-          <div style={{fontSize:15,fontWeight:"bold",color:T.green}}>{fmt$(r.amount)}</div>
-          <button onClick={()=>del(r.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14}}>🗑️</button>
+          <div style={{flex:1}}><div style={{fontSize:16,color:T.text}}>{r.desc}</div><div style={{display:"flex",gap:8,marginTop:3}}><Tag color={T.blue}>{r.source}</Tag><Tag color={T.purple}>{r.collection}</Tag><span style={{fontSize:13,color:T.textDim}}>{r.date}</span></div></div>
+          <div style={{fontSize:17,fontWeight:"bold",color:T.green}}>{fmt$(r.amount)}</div>
+          <button onClick={()=>del(r.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:18}}>🗑️</button>
         </div>
       ))}
     </div>
@@ -1890,9 +1890,9 @@ function PL({revenue,expenses}) {
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:24}}>
         {[{l:"Gross Revenue",v:fmt$(totalRev),c:T.green,icon:"💵"},{l:"Total Expenses",v:fmt$(totalExp),c:T.red,icon:"💸"},{l:"Net Profit",v:fmt$(profit),c:profit>=0?T.green:T.red,icon:"📊"},{l:"Profit Margin",v:`${margin}%`,c:parseFloat(margin)>=30?T.green:parseFloat(margin)>=0?T.orange:T.red,icon:"📈"}].map(s=>(
           <div key={s.l} style={{background:T.surface,border:`1px solid ${s.c}30`,borderRadius:12,padding:"16px",textAlign:"center"}}>
-            <div style={{fontSize:24,marginBottom:6}}>{s.icon}</div>
-            <div style={{fontSize:22,fontWeight:"bold",color:s.c}}>{s.v}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginTop:4}}>{s.l.toUpperCase()}</div>
+            <div style={{fontSize:25,marginBottom:6}}>{s.icon}</div>
+            <div style={{fontSize:23,fontWeight:"bold",color:s.c}}>{s.v}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginTop:4}}>{s.l.toUpperCase()}</div>
           </div>
         ))}
       </div>
@@ -1906,14 +1906,14 @@ function PL({revenue,expenses}) {
                   <div style={{flex:1,background:T.green,borderRadius:"3px 3px 0 0",height:`${(d.rev/maxVal)*120+4}px`,minHeight:4}}/>
                   <div style={{flex:1,background:T.red,borderRadius:"3px 3px 0 0",height:`${(d.exp/maxVal)*120+4}px`,minHeight:4,opacity:0.8}}/>
                 </div>
-                <div style={{fontSize:8,color:T.textDim}}>{d.month}</div>
-                <div style={{fontSize:8,color:d.profit>=0?T.green:T.red}}>{d.profit>=0?"+":""}{fmt$(d.profit)}</div>
+                <div style={{fontSize:13,color:T.textDim}}>{d.month}</div>
+                <div style={{fontSize:13,color:d.profit>=0?T.green:T.red}}>{d.profit>=0?"+":""}{fmt$(d.profit)}</div>
               </div>
             ))}
           </div>
           <div style={{display:"flex",gap:16,marginTop:8,justifyContent:"center"}}>
-            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:T.green,borderRadius:2}}/><span style={{fontSize:9,color:T.textDim}}>Revenue</span></div>
-            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:T.red,borderRadius:2,opacity:0.8}}/><span style={{fontSize:9,color:T.textDim}}>Expenses</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:T.green,borderRadius:2}}/><span style={{fontSize:13,color:T.textDim}}>Revenue</span></div>
+            <div style={{display:"flex",alignItems:"center",gap:4}}><div style={{width:10,height:10,background:T.red,borderRadius:2,opacity:0.8}}/><span style={{fontSize:13,color:T.textDim}}>Expenses</span></div>
           </div>
         </Card>
       )}
@@ -1922,24 +1922,24 @@ function PL({revenue,expenses}) {
           <SecTitle>💸 Expense Breakdown</SecTitle>
           {expByCat.map(({cat,total})=>(
             <div key={cat} style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
-              <div style={{fontSize:11,color:T.textDim,width:90,flexShrink:0}}>{cat}</div>
+              <div style={{fontSize:15,color:T.textDim,width:90,flexShrink:0}}>{cat}</div>
               <div style={{flex:1,height:5,background:"rgba(255,255,255,0.06)",borderRadius:3}}><div style={{width:`${(total/totalExp)*100}%`,height:"100%",background:T.red,borderRadius:3,opacity:0.8}}/></div>
-              <div style={{fontSize:11,color:T.red,width:70,textAlign:"right"}}>{fmt$(total)}</div>
+              <div style={{fontSize:15,color:T.red,width:70,textAlign:"right"}}>{fmt$(total)}</div>
             </div>
           ))}
-          {expByCat.length===0&&<div style={{color:T.textDim,fontSize:12}}>No expenses logged.</div>}
+          {expByCat.length===0&&<div style={{color:T.textDim,fontSize:16}}>No expenses logged.</div>}
         </Card>
         <Card accent={`rgba(74,222,128,0.2)`}>
           <SecTitle>📋 P&L Summary</SecTitle>
           {[["Gross Revenue",fmt$(totalRev),T.green],[" − Total Expenses",fmt$(totalExp),T.red],["= Net Profit",fmt$(profit),profit>=0?T.green:T.red],["Profit Margin",`${margin}%`,parseFloat(margin)>=30?T.green:T.orange]].map(([l,v,c])=>(
             <div key={l} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:`1px solid ${T.borderDim}`}}>
-              <div style={{fontSize:12,color:T.textDim}}>{l}</div>
-              <div style={{fontSize:12,fontWeight:"bold",color:c}}>{v}</div>
+              <div style={{fontSize:16,color:T.textDim}}>{l}</div>
+              <div style={{fontSize:16,fontWeight:"bold",color:c}}>{v}</div>
             </div>
           ))}
           <div style={{marginTop:12,padding:10,background:profit>=0?"rgba(74,222,128,0.08)":"rgba(248,113,113,0.08)",borderRadius:8,border:`1px solid ${profit>=0?T.green:T.red}30`}}>
-            <div style={{fontSize:10,color:profit>=0?T.green:T.red,letterSpacing:1}}>{profit>=0?"✅ PROFITABLE":"⚠️ WATCH SPEND"}</div>
-            <div style={{fontSize:11,color:T.textDim,marginTop:4}}>{profit>=0?`Keeping ${margin}% of every dollar.`:`Expenses exceed revenue by ${fmt$(Math.abs(profit))}.`}</div>
+            <div style={{fontSize:14,color:profit>=0?T.green:T.red,letterSpacing:1}}>{profit>=0?"✅ PROFITABLE":"⚠️ WATCH SPEND"}</div>
+            <div style={{fontSize:15,color:T.textDim,marginTop:4}}>{profit>=0?`Keeping ${margin}% of every dollar.`:`Expenses exceed revenue by ${fmt$(Math.abs(profit))}.`}</div>
           </div>
         </Card>
       </div>
@@ -1966,7 +1966,7 @@ function Campaigns({campaigns,setCampaigns,showToast}) {
   return (
     <div style={{maxWidth:800}}>
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:20}}>
-        {STATUSES.map(s=><div key={s} style={{background:T.surface,border:`1px solid ${SC[s]}30`,borderRadius:10,padding:"12px",textAlign:"center"}}><div style={{fontSize:20,fontWeight:"bold",color:SC[s]}}>{campaigns.filter(c=>c.status===s).length}</div><div style={{fontSize:9,color:T.textDim,letterSpacing:1.5}}>{s.toUpperCase()}</div></div>)}
+        {STATUSES.map(s=><div key={s} style={{background:T.surface,border:`1px solid ${SC[s]}30`,borderRadius:10,padding:"12px",textAlign:"center"}}><div style={{fontSize:21,fontWeight:"bold",color:SC[s]}}>{campaigns.filter(c=>c.status===s).length}</div><div style={{fontSize:13,color:T.textDim,letterSpacing:1.5}}>{s.toUpperCase()}</div></div>)}
       </div>
       <Card>
         <SecTitle>+ New Campaign</SecTitle>
@@ -1982,20 +1982,20 @@ function Campaigns({campaigns,setCampaigns,showToast}) {
         <Btn onClick={add} style={{width:"100%"}}>+ Add Campaign</Btn>
       </Card>
       <div style={{display:"flex",gap:6,marginBottom:14,flexWrap:"wrap"}}>
-        {["All",...STATUSES].map(s=><button key={s} onClick={()=>setFilter(s)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${filter===s?T.gold:"rgba(245,166,35,0.2)"}`,background:filter===s?T.goldDim:"transparent",color:filter===s?T.gold:T.textDim,fontSize:10,cursor:"pointer"}}>{s}</button>)}
+        {["All",...STATUSES].map(s=><button key={s} onClick={()=>setFilter(s)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${filter===s?T.gold:"rgba(245,166,35,0.2)"}`,background:filter===s?T.goldDim:"transparent",color:filter===s?T.gold:T.textDim,fontSize:14,cursor:"pointer"}}>{s}</button>)}
       </div>
       {filtered.map(c=>(
         <Card key={c.id} accent={`${SC[c.status]}30`}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
-            <div><div style={{fontSize:14,fontWeight:"bold",color:T.text,marginBottom:6}}>{c.name}</div><div style={{display:"flex",gap:6,flexWrap:"wrap"}}><Tag color={T.purple}>{c.collection}</Tag><Tag color={T.blue}>{c.type}</Tag><Tag color={SC[c.status]}>{c.status}</Tag></div></div>
-            <button onClick={()=>del(c.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:T.textDim}}>🗑️</button>
+            <div><div style={{fontSize:18,fontWeight:"bold",color:T.text,marginBottom:6}}>{c.name}</div><div style={{display:"flex",gap:6,flexWrap:"wrap"}}><Tag color={T.purple}>{c.collection}</Tag><Tag color={T.blue}>{c.type}</Tag><Tag color={SC[c.status]}>{c.status}</Tag></div></div>
+            <button onClick={()=>del(c.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:18,color:T.textDim}}>🗑️</button>
           </div>
-          <div style={{display:"flex",gap:12,marginBottom:8,fontSize:11,color:T.textDim}}>
+          <div style={{display:"flex",gap:12,marginBottom:8,fontSize:15,color:T.textDim}}>
             {c.start&&<span>📅 {c.start}</span>}{c.end&&<span>🏁 {c.end}</span>}
           </div>
-          {c.notes&&<div style={{fontSize:11,color:T.textDim,fontStyle:"italic",marginBottom:10}}>{c.notes}</div>}
+          {c.notes&&<div style={{fontSize:15,color:T.textDim,fontStyle:"italic",marginBottom:10}}>{c.notes}</div>}
           <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-            {STATUSES.filter(s=>s!==c.status).map(s=><button key={s} onClick={()=>upStatus(c.id,s)} style={{fontSize:9,padding:"3px 8px",borderRadius:4,border:`1px solid ${SC[s]}50`,background:`${SC[s]}10`,color:SC[s],cursor:"pointer"}}>→ {s}</button>)}
+            {STATUSES.filter(s=>s!==c.status).map(s=><button key={s} onClick={()=>upStatus(c.id,s)} style={{fontSize:13,padding:"3px 8px",borderRadius:4,border:`1px solid ${SC[s]}50`,background:`${SC[s]}10`,color:SC[s],cursor:"pointer"}}>→ {s}</button>)}
           </div>
         </Card>
       ))}
@@ -2022,8 +2022,8 @@ function Tasks({tasks,setTasks,showToast}) {
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10,marginBottom:20}}>
         {[{l:"Open",v:tasks.filter(t=>!t.done).length,c:T.gold},{l:"Done",v:tasks.filter(t=>t.done).length,c:T.green},{l:"Overdue",v:tasks.filter(t=>!t.done&&t.due&&t.due<today()).length,c:T.red}].map(s=>(
           <div key={s.l} style={{background:T.surface,border:`1px solid ${s.c}30`,borderRadius:10,padding:"12px",textAlign:"center"}}>
-            <div style={{fontSize:22,fontWeight:"bold",color:s.c}}>{s.v}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5}}>{s.l.toUpperCase()}</div>
+            <div style={{fontSize:23,fontWeight:"bold",color:s.c}}>{s.v}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5}}>{s.l.toUpperCase()}</div>
           </div>
         ))}
       </div>
@@ -2038,21 +2038,21 @@ function Tasks({tasks,setTasks,showToast}) {
         <Btn onClick={add} style={{width:"100%"}}>+ Add Task</Btn>
       </Card>
       <div style={{display:"flex",gap:8,marginBottom:14,alignItems:"center",flexWrap:"wrap"}}>
-        {["All",...PRIORITIES].map(f=><button key={f} onClick={()=>setFilter(f)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${filter===f?T.gold:"rgba(245,166,35,0.2)"}`,background:filter===f?T.goldDim:"transparent",color:filter===f?T.gold:T.textDim,fontSize:10,cursor:"pointer"}}>{f}</button>)}
-        <button onClick={()=>setShowDone(o=>!o)} style={{marginLeft:"auto",padding:"4px 12px",borderRadius:20,border:`1px solid ${showDone?T.green:"rgba(74,222,128,0.2)"}`,background:showDone?"rgba(74,222,128,0.1)":"transparent",color:showDone?T.green:T.textDim,fontSize:10,cursor:"pointer"}}>{showDone?"Hide Done":"Show Done"}</button>
+        {["All",...PRIORITIES].map(f=><button key={f} onClick={()=>setFilter(f)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${filter===f?T.gold:"rgba(245,166,35,0.2)"}`,background:filter===f?T.goldDim:"transparent",color:filter===f?T.gold:T.textDim,fontSize:14,cursor:"pointer"}}>{f}</button>)}
+        <button onClick={()=>setShowDone(o=>!o)} style={{marginLeft:"auto",padding:"4px 12px",borderRadius:20,border:`1px solid ${showDone?T.green:"rgba(74,222,128,0.2)"}`,background:showDone?"rgba(74,222,128,0.1)":"transparent",color:showDone?T.green:T.textDim,fontSize:14,cursor:"pointer"}}>{showDone?"Hide Done":"Show Done"}</button>
       </div>
       {filtered.map(t=>(
         <div key={t.id} style={{display:"flex",gap:12,alignItems:"flex-start",background:T.surface,border:`1px solid ${t.done?T.green+"30":t.due&&t.due<today()?T.red+"40":T.border}`,borderRadius:10,padding:"12px 14px",marginBottom:8,opacity:t.done?0.6:1}}>
-          <button onClick={()=>toggle(t.id)} style={{background:t.done?"rgba(74,222,128,0.2)":"transparent",border:`2px solid ${t.done?T.green:T.textDim}`,borderRadius:6,width:24,height:24,cursor:"pointer",color:T.green,fontSize:14,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center"}}>{t.done?"✓":""}</button>
+          <button onClick={()=>toggle(t.id)} style={{background:t.done?"rgba(74,222,128,0.2)":"transparent",border:`2px solid ${t.done?T.green:T.textDim}`,borderRadius:6,width:24,height:24,cursor:"pointer",color:T.green,fontSize:18,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center"}}>{t.done?"✓":""}</button>
           <div style={{flex:1}}>
-            <div style={{fontSize:12,color:t.done?T.textDim:T.text,textDecoration:t.done?"line-through":"none"}}>{t.title}</div>
+            <div style={{fontSize:16,color:t.done?T.textDim:T.text,textDecoration:t.done?"line-through":"none"}}>{t.title}</div>
             <div style={{display:"flex",gap:6,marginTop:4,flexWrap:"wrap"}}>
               <Tag color={t.priority==="🔴 High"?T.red:t.priority==="🟡 Medium"?T.gold:T.green}>{t.priority}</Tag>
-              {t.due&&<span style={{fontSize:9,color:t.due<today()&&!t.done?T.red:T.textDim}}>📅 {t.due}</span>}
+              {t.due&&<span style={{fontSize:13,color:t.due<today()&&!t.done?T.red:T.textDim}}>📅 {t.due}</span>}
             </div>
-            {t.notes&&<div style={{fontSize:11,color:T.textDim,marginTop:4,fontStyle:"italic"}}>{t.notes}</div>}
+            {t.notes&&<div style={{fontSize:15,color:T.textDim,marginTop:4,fontStyle:"italic"}}>{t.notes}</div>}
           </div>
-          <button onClick={()=>del(t.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:T.textDim}}>🗑️</button>
+          <button onClick={()=>del(t.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:18,color:T.textDim}}>🗑️</button>
         </div>
       ))}
     </div>
@@ -2082,8 +2082,8 @@ function Inventory({inventory,setInventory,showToast}) {
       <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:20}}>
         {[{l:"Total SKUs",v:inventory.length,c:T.gold},{l:"Low Stock",v:lowStock.length,c:lowStock.length>0?T.red:T.green},{l:"Inventory Value",v:fmt$(totalVal),c:T.blue}].map(s=>(
           <div key={s.l} style={{background:T.surface,border:`1px solid ${s.c}30`,borderRadius:10,padding:"14px",textAlign:"center"}}>
-            <div style={{fontSize:20,fontWeight:"bold",color:s.c}}>{s.v}</div>
-            <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginTop:2}}>{s.l.toUpperCase()}</div>
+            <div style={{fontSize:21,fontWeight:"bold",color:s.c}}>{s.v}</div>
+            <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginTop:2}}>{s.l.toUpperCase()}</div>
           </div>
         ))}
       </div>
@@ -2091,7 +2091,7 @@ function Inventory({inventory,setInventory,showToast}) {
         <Card accent="rgba(251,146,60,0.3)" style={{marginBottom:16}}>
           <SecTitle>⚠️ Reorder Alerts</SecTitle>
           <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
-            {lowStock.map(i=><div key={i.id} style={{background:"rgba(248,113,113,0.1)",border:`1px solid ${T.red}40`,borderRadius:8,padding:"6px 12px"}}><div style={{fontSize:11,color:T.text}}>{i.name} {i.size}</div><div style={{fontSize:10,color:T.red}}>Only {i.qty} left (reorder at {i.reorder})</div></div>)}
+            {lowStock.map(i=><div key={i.id} style={{background:"rgba(248,113,113,0.1)",border:`1px solid ${T.red}40`,borderRadius:8,padding:"6px 12px"}}><div style={{fontSize:15,color:T.text}}>{i.name} {i.size}</div><div style={{fontSize:14,color:T.red}}>Only {i.qty} left (reorder at {i.reorder})</div></div>)}
           </div>
         </Card>
       )}
@@ -2112,12 +2112,12 @@ function Inventory({inventory,setInventory,showToast}) {
         </div>
       </Card>
       <div style={{display:"flex",gap:6,marginBottom:14,flexWrap:"wrap"}}>
-        {cols.map(c=><button key={c} onClick={()=>setFilter(c)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${filter===c?T.gold:"rgba(245,166,35,0.2)"}`,background:filter===c?T.goldDim:"transparent",color:filter===c?T.gold:T.textDim,fontSize:10,cursor:"pointer"}}>{c}</button>)}
+        {cols.map(c=><button key={c} onClick={()=>setFilter(c)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${filter===c?T.gold:"rgba(245,166,35,0.2)"}`,background:filter===c?T.goldDim:"transparent",color:filter===c?T.gold:T.textDim,fontSize:14,cursor:"pointer"}}>{c}</button>)}
       </div>
       <div style={{overflowX:"auto"}}>
-        <table style={{width:"100%",borderCollapse:"collapse",fontSize:12}}>
-          <thead><tr style={{borderBottom:`1px solid ${T.border}`}}>{["SKU","Product","Size","Collection","Stock","Reorder","Price","Value",""].map(h=><th key={h} style={{padding:"8px 10px",textAlign:"left",fontSize:9,color:T.textDim,letterSpacing:1.5,fontWeight:"normal"}}>{h}</th>)}</tr></thead>
-          <tbody>{filtered.map(i=>{const low=parseInt(i.qty)<=parseInt(i.reorder);return(<tr key={i.id} style={{borderBottom:`1px solid ${T.borderDim}`}}><td style={{padding:"10px",color:T.textDim,fontSize:10,fontFamily:"monospace"}}>{i.sku}</td><td style={{padding:"10px",color:T.text,fontWeight:"bold"}}>{i.name}</td><td style={{padding:"10px",color:T.textDim}}>{i.size}</td><td style={{padding:"10px"}}><Tag color={T.blue}>{i.collection}</Tag></td><td style={{padding:"10px",color:low?T.red:T.green,fontWeight:"bold"}}>{i.qty}</td><td style={{padding:"10px",color:T.textDim}}>{i.reorder}</td><td style={{padding:"10px",color:T.gold}}>{fmt$(i.price)}</td><td style={{padding:"10px",color:T.textDim}}>{fmt$(parseFloat(i.price||0)*parseInt(i.qty||0))}</td><td style={{padding:"10px"}}><div style={{display:"flex",gap:6}}><button onClick={()=>edit(i)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12}}>✏️</button><button onClick={()=>del(i.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:12}}>🗑️</button></div></td></tr>);})}</tbody>
+        <table style={{width:"100%",borderCollapse:"collapse",fontSize:16}}>
+          <thead><tr style={{borderBottom:`1px solid ${T.border}`}}>{["SKU","Product","Size","Collection","Stock","Reorder","Price","Value",""].map(h=><th key={h} style={{padding:"8px 10px",textAlign:"left",fontSize:13,color:T.textDim,letterSpacing:1.5,fontWeight:"normal"}}>{h}</th>)}</tr></thead>
+          <tbody>{filtered.map(i=>{const low=parseInt(i.qty)<=parseInt(i.reorder);return(<tr key={i.id} style={{borderBottom:`1px solid ${T.borderDim}`}}><td style={{padding:"10px",color:T.textDim,fontSize:14,fontFamily:"monospace"}}>{i.sku}</td><td style={{padding:"10px",color:T.text,fontWeight:"bold"}}>{i.name}</td><td style={{padding:"10px",color:T.textDim}}>{i.size}</td><td style={{padding:"10px"}}><Tag color={T.blue}>{i.collection}</Tag></td><td style={{padding:"10px",color:low?T.red:T.green,fontWeight:"bold"}}>{i.qty}</td><td style={{padding:"10px",color:T.textDim}}>{i.reorder}</td><td style={{padding:"10px",color:T.gold}}>{fmt$(i.price)}</td><td style={{padding:"10px",color:T.textDim}}>{fmt$(parseFloat(i.price||0)*parseInt(i.qty||0))}</td><td style={{padding:"10px"}}><div style={{display:"flex",gap:6}}><button onClick={()=>edit(i)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16}}>✏️</button><button onClick={()=>del(i.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:16}}>🗑️</button></div></td></tr>);})}</tbody>
         </table>
       </div>
     </div>
@@ -2143,9 +2143,9 @@ function Expenses({expenses,setExpenses,showToast}) {
   return (
     <div style={{maxWidth:800}}>
       <Card style={{marginBottom:20}}>
-        <div style={{fontSize:10,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>TOTAL BUSINESS SPEND</div>
-        <div style={{fontSize:36,fontWeight:"bold",color:T.gold}}>{fmt$(total)}</div>
-        {byCat.length>0&&<div style={{marginTop:14}}>{byCat.map(({cat,total:t})=><div key={cat} style={{display:"flex",alignItems:"center",gap:10,marginBottom:6}}><div style={{fontSize:11,color:T.textDim,width:100,flexShrink:0}}>{cat}</div><div style={{flex:1,height:5,background:"rgba(255,255,255,0.06)",borderRadius:3}}><div style={{width:`${(t/total)*100}%`,height:"100%",background:T.gold,borderRadius:3}}/></div><div style={{fontSize:11,color:T.gold,width:70,textAlign:"right"}}>{fmt$(t)}</div></div>)}</div>}
+        <div style={{fontSize:14,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>TOTAL BUSINESS SPEND</div>
+        <div style={{fontSize:37,fontWeight:"bold",color:T.gold}}>{fmt$(total)}</div>
+        {byCat.length>0&&<div style={{marginTop:14}}>{byCat.map(({cat,total:t})=><div key={cat} style={{display:"flex",alignItems:"center",gap:10,marginBottom:6}}><div style={{fontSize:15,color:T.textDim,width:100,flexShrink:0}}>{cat}</div><div style={{flex:1,height:5,background:"rgba(255,255,255,0.06)",borderRadius:3}}><div style={{width:`${(t/total)*100}%`,height:"100%",background:T.gold,borderRadius:3}}/></div><div style={{fontSize:15,color:T.gold,width:70,textAlign:"right"}}>{fmt$(t)}</div></div>)}</div>}
       </Card>
       <Card>
         <SecTitle>Log Expense</SecTitle>
@@ -2158,13 +2158,13 @@ function Expenses({expenses,setExpenses,showToast}) {
         <Btn onClick={add} style={{width:"100%"}}>+ Log Expense</Btn>
       </Card>
       <div style={{display:"flex",gap:6,marginBottom:14,flexWrap:"wrap"}}>
-        {["All",...EXPENSE_CATS.filter(c=>expenses.some(e=>e.cat===c))].map(c=><button key={c} onClick={()=>setFCat(c)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${fCat===c?T.gold:"rgba(245,166,35,0.2)"}`,background:fCat===c?T.goldDim:"transparent",color:fCat===c?T.gold:T.textDim,fontSize:10,cursor:"pointer"}}>{c}</button>)}
+        {["All",...EXPENSE_CATS.filter(c=>expenses.some(e=>e.cat===c))].map(c=><button key={c} onClick={()=>setFCat(c)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${fCat===c?T.gold:"rgba(245,166,35,0.2)"}`,background:fCat===c?T.goldDim:"transparent",color:fCat===c?T.gold:T.textDim,fontSize:14,cursor:"pointer"}}>{c}</button>)}
       </div>
       {filtered.map(e=>(
         <div key={e.id} style={{display:"flex",alignItems:"center",gap:12,background:T.surface,border:`1px solid ${T.borderDim}`,borderRadius:10,padding:"10px 14px",marginBottom:8}}>
-          <div style={{flex:1}}><div style={{fontSize:12,color:T.text}}>{e.desc}</div><div style={{display:"flex",gap:8,marginTop:3}}><Tag>{e.cat}</Tag><span style={{fontSize:9,color:T.textDim}}>{e.date}</span></div></div>
-          <div style={{fontSize:15,fontWeight:"bold",color:T.red}}>{fmt$(e.amount)}</div>
-          <button onClick={()=>del(e.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14}}>🗑️</button>
+          <div style={{flex:1}}><div style={{fontSize:16,color:T.text}}>{e.desc}</div><div style={{display:"flex",gap:8,marginTop:3}}><Tag>{e.cat}</Tag><span style={{fontSize:13,color:T.textDim}}>{e.date}</span></div></div>
+          <div style={{fontSize:17,fontWeight:"bold",color:T.red}}>{fmt$(e.amount)}</div>
+          <button onClick={()=>del(e.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:18}}>🗑️</button>
         </div>
       ))}
     </div>
@@ -2253,23 +2253,23 @@ function Notes({notes,setNotes,showToast}) {
         {/* Body + Voice toolbar */}
         <div style={{marginBottom:8}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
-            <div style={{fontSize:11,color:T.textDim,letterSpacing:1,textTransform:"uppercase"}}>Content</div>
+            <div style={{fontSize:15,color:T.textDim,letterSpacing:1,textTransform:"uppercase"}}>Content</div>
             <div style={{display:"flex",gap:8}}>
               {/* Voice-to-text */}
               <button onClick={listening?stopListen:startListen} style={{
                 display:"flex",alignItems:"center",gap:5,padding:"5px 12px",borderRadius:16,
                 border:`1.5px solid ${listening?T.red:T.gold}`,
                 background:listening?"rgba(248,113,113,0.12)":T.goldDim,
-                color:listening?T.red:T.gold, fontSize:11, cursor:"pointer",
+                color:listening?T.red:T.gold, fontSize:15, cursor:"pointer",
               }}>
                 {listening ? <><span style={{width:8,height:8,background:T.red,borderRadius:"50%",animation:"tickPulse 1s infinite",display:"inline-block"}}/>Stop</> : <>🎤 Dictate</>}
               </button>
               {/* Camera */}
-              <button onClick={()=>camRef.current?.click()} style={{padding:"5px 12px",borderRadius:16,border:`1.5px solid ${T.blue}`,background:"rgba(59,130,246,0.1)",color:T.blue,fontSize:11,cursor:"pointer"}}>
+              <button onClick={()=>camRef.current?.click()} style={{padding:"5px 12px",borderRadius:16,border:`1.5px solid ${T.blue}`,background:"rgba(59,130,246,0.1)",color:T.blue,fontSize:15,cursor:"pointer"}}>
                 📷 Camera
               </button>
               {/* Upload */}
-              <button onClick={()=>fileRef.current?.click()} style={{padding:"5px 12px",borderRadius:16,border:`1.5px solid ${T.teal}`,background:"rgba(45,212,191,0.1)",color:T.teal,fontSize:11,cursor:"pointer"}}>
+              <button onClick={()=>fileRef.current?.click()} style={{padding:"5px 12px",borderRadius:16,border:`1.5px solid ${T.teal}`,background:"rgba(45,212,191,0.1)",color:T.teal,fontSize:15,cursor:"pointer"}}>
                 ⬆️ Upload
               </button>
               <input ref={camRef}  type="file" accept="image/*" capture="camera"    style={{display:"none"}} onChange={e=>handlePhoto(e,"camera")}/>
@@ -2277,7 +2277,7 @@ function Notes({notes,setNotes,showToast}) {
             </div>
           </div>
           {listening && (
-            <div style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",background:"rgba(248,113,113,0.06)",border:`1px solid ${T.red}40`,borderRadius:8,marginBottom:8,fontSize:11,color:T.red}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,padding:"6px 10px",background:"rgba(248,113,113,0.06)",border:`1px solid ${T.red}40`,borderRadius:8,marginBottom:8,fontSize:15,color:T.red}}>
               <span style={{width:8,height:8,background:T.red,borderRadius:"50%",animation:"tickPulse 0.8s infinite",display:"inline-block"}}/>
               Listening… speak now. Words appear in the note automatically.
             </div>
@@ -2296,10 +2296,10 @@ function Notes({notes,setNotes,showToast}) {
           <div style={{position:"relative",marginTop:8}}>
             <img src={form.image} alt="note" style={{width:"100%",maxHeight:320,objectFit:"cover",borderRadius:10,border:`1px solid ${T.border}`}}/>
             <div style={{display:"flex",gap:8,marginTop:8}}>
-              <button onClick={()=>downloadPhoto(form.image,form.title)} style={{flex:1,padding:"8px",borderRadius:8,border:`1px solid ${T.green}50`,background:"rgba(74,222,128,0.08)",color:T.green,fontSize:11,cursor:"pointer"}}>
+              <button onClick={()=>downloadPhoto(form.image,form.title)} style={{flex:1,padding:"8px",borderRadius:8,border:`1px solid ${T.green}50`,background:"rgba(74,222,128,0.08)",color:T.green,fontSize:15,cursor:"pointer"}}>
                 ⬇️ Download Photo
               </button>
-              <button onClick={()=>setForm(p=>({...p,image:null}))} style={{padding:"8px 14px",borderRadius:8,border:`1px solid ${T.red}50`,background:"rgba(248,113,113,0.08)",color:T.red,fontSize:11,cursor:"pointer"}}>
+              <button onClick={()=>setForm(p=>({...p,image:null}))} style={{padding:"8px 14px",borderRadius:8,border:`1px solid ${T.red}50`,background:"rgba(248,113,113,0.08)",color:T.red,fontSize:15,cursor:"pointer"}}>
                 ✕ Remove
               </button>
             </div>
@@ -2308,8 +2308,8 @@ function Notes({notes,setNotes,showToast}) {
 
         {/* Favorite toggle */}
         <div style={{display:"flex",alignItems:"center",gap:8,marginTop:14,padding:"8px 12px",background:form.favorite?"rgba(245,166,35,0.06)":"transparent",border:`1px solid ${form.favorite?T.gold:T.border}`,borderRadius:8,cursor:"pointer"}} onClick={()=>setForm(p=>({...p,favorite:!p.favorite}))}>
-          <span style={{fontSize:18}}>{form.favorite?"⭐":"☆"}</span>
-          <span style={{fontSize:12,color:form.favorite?T.gold:T.textDim}}>{form.favorite?"Saved to Favorites":"Add to Favorites"}</span>
+          <span style={{fontSize:19}}>{form.favorite?"⭐":"☆"}</span>
+          <span style={{fontSize:16,color:form.favorite?T.gold:T.textDim}}>{form.favorite?"Saved to Favorites":"Add to Favorites"}</span>
         </div>
       </Card>
     </div>
@@ -2324,19 +2324,19 @@ function Notes({notes,setNotes,showToast}) {
       </div>
       <div style={{display:"flex",gap:6,marginBottom:16,flexWrap:"wrap"}}>
         {["All","⭐ Favorites",...NOTE_CATS].map(c=>(
-          <button key={c} onClick={()=>setFCat(c)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${fCat===c?T.gold:"rgba(245,166,35,0.2)"}`,background:fCat===c?T.goldDim:"transparent",color:fCat===c?T.gold:T.textDim,fontSize:10,cursor:"pointer"}}>
+          <button key={c} onClick={()=>setFCat(c)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${fCat===c?T.gold:"rgba(245,166,35,0.2)"}`,background:fCat===c?T.goldDim:"transparent",color:fCat===c?T.gold:T.textDim,fontSize:14,cursor:"pointer"}}>
             {c}
           </button>
         ))}
       </div>
-      {filtered.length===0 && <div style={{textAlign:"center",color:T.textDim,fontSize:12,padding:40}}>No notes yet. Hit + New to start.</div>}
+      {filtered.length===0 && <div style={{textAlign:"center",color:T.textDim,fontSize:16,padding:40}}>No notes yet. Hit + New to start.</div>}
       {filtered.map(n=>(
         <Card key={n.id} accent={n.pinned?`${T.gold}40`:undefined} style={{marginBottom:12}}>
           {/* Photo thumbnail */}
           {n.image && (
             <div style={{position:"relative",marginBottom:10}}>
               <img src={n.image} alt="note" style={{width:"100%",maxHeight:200,objectFit:"cover",borderRadius:8,border:`1px solid ${T.border}`}}/>
-              <button onClick={()=>downloadPhoto(n.image,n.title)} style={{position:"absolute",bottom:8,right:8,padding:"5px 10px",borderRadius:8,border:"none",background:"rgba(0,0,0,0.6)",color:"#fff",fontSize:11,cursor:"pointer",backdropFilter:"blur(4px)"}}>
+              <button onClick={()=>downloadPhoto(n.image,n.title)} style={{position:"absolute",bottom:8,right:8,padding:"5px 10px",borderRadius:8,border:"none",background:"rgba(0,0,0,0.6)",color:"#fff",fontSize:15,cursor:"pointer",backdropFilter:"blur(4px)"}}>
                 ⬇️
               </button>
             </div>
@@ -2348,15 +2348,15 @@ function Notes({notes,setNotes,showToast}) {
               {n.favorite&&<Tag color={T.gold}>⭐</Tag>}
             </div>
             <div style={{display:"flex",gap:4}}>
-              <button onClick={()=>fav(n.id)}  title="Favorite" style={{background:"none",border:"none",cursor:"pointer",fontSize:15}}>{n.favorite?"⭐":"☆"}</button>
-              <button onClick={()=>pin(n.id)}  title="Pin"      style={{background:"none",border:"none",cursor:"pointer",fontSize:14}}>{n.pinned?"📌":"📍"}</button>
-              <button onClick={()=>startEdit(n)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14}}>✏️</button>
-              <button onClick={()=>del(n.id)}  style={{background:"none",border:"none",cursor:"pointer",fontSize:14}}>🗑️</button>
+              <button onClick={()=>fav(n.id)}  title="Favorite" style={{background:"none",border:"none",cursor:"pointer",fontSize:17}}>{n.favorite?"⭐":"☆"}</button>
+              <button onClick={()=>pin(n.id)}  title="Pin"      style={{background:"none",border:"none",cursor:"pointer",fontSize:18}}>{n.pinned?"📌":"📍"}</button>
+              <button onClick={()=>startEdit(n)} style={{background:"none",border:"none",cursor:"pointer",fontSize:18}}>✏️</button>
+              <button onClick={()=>del(n.id)}  style={{background:"none",border:"none",cursor:"pointer",fontSize:18}}>🗑️</button>
             </div>
           </div>
-          <div style={{fontSize:14,fontWeight:"bold",color:T.text,marginBottom:5}}>{n.title}</div>
-          <div style={{fontSize:12,color:T.textDim,lineHeight:1.7}}>{(n.body||"").slice(0,200)}{(n.body||"").length>200?"…":""}</div>
-          <div style={{fontSize:9,color:T.textMuted,marginTop:8}}>{n.date}</div>
+          <div style={{fontSize:18,fontWeight:"bold",color:T.text,marginBottom:5}}>{n.title}</div>
+          <div style={{fontSize:16,color:T.textDim,lineHeight:1.7}}>{(n.body||"").slice(0,200)}{(n.body||"").length>200?"…":""}</div>
+          <div style={{fontSize:13,color:T.textMuted,marginTop:8}}>{n.date}</div>
         </Card>
       ))}
     </div>
@@ -2392,16 +2392,16 @@ function VoiceMemos({memos,setMemos,showToast}) {
   return (
     <div style={{maxWidth:700}}>
       <Card style={{textAlign:"center",padding:28,marginBottom:20}}>
-        {recording&&<div style={{marginBottom:16}}><div style={{width:14,height:14,background:T.red,borderRadius:"50%",margin:"0 auto 10px",animation:"tickPulse 1s infinite"}}/><div style={{fontSize:38,fontWeight:"bold",color:T.red,fontFamily:"monospace"}}>{fmtS(elapsed)}</div></div>}
-        {!recording&&<div style={{marginBottom:16}}><div style={{fontSize:48,marginBottom:12}}>🎤</div><Inp value={label} onChange={setLabel} placeholder="Label this memo…" style={{textAlign:"center"}}/></div>}
-        <button onClick={recording?stopRec:startRec} style={{background:recording?"rgba(248,113,113,0.15)":T.goldDim,border:`2px solid ${recording?T.red:T.gold}`,color:recording?T.red:T.gold,borderRadius:"50%",width:76,height:76,fontSize:30,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto"}}>{recording?"⏹":"⏺"}</button>
-        <div style={{fontSize:9,color:T.textDim,marginTop:10,letterSpacing:1.5}}>{recording?"TAP TO STOP":"TAP TO RECORD"}</div>
+        {recording&&<div style={{marginBottom:16}}><div style={{width:14,height:14,background:T.red,borderRadius:"50%",margin:"0 auto 10px",animation:"tickPulse 1s infinite"}}/><div style={{fontSize:44,fontWeight:"bold",color:T.red,fontFamily:"monospace"}}>{fmtS(elapsed)}</div></div>}
+        {!recording&&<div style={{marginBottom:16}}><div style={{fontSize:54,marginBottom:12}}>🎤</div><Inp value={label} onChange={setLabel} placeholder="Label this memo…" style={{textAlign:"center"}}/></div>}
+        <button onClick={recording?stopRec:startRec} style={{background:recording?"rgba(248,113,113,0.15)":T.goldDim,border:`2px solid ${recording?T.red:T.gold}`,color:recording?T.red:T.gold,borderRadius:"50%",width:76,height:76,fontSize:31,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto"}}>{recording?"⏹":"⏺"}</button>
+        <div style={{fontSize:13,color:T.textDim,marginTop:10,letterSpacing:1.5}}>{recording?"TAP TO STOP":"TAP TO RECORD"}</div>
       </Card>
       {memos.map(m=>(
         <Card key={m.id}>
           <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
-            <div><div style={{fontSize:12,fontWeight:"bold",color:T.text}}>{m.label}</div><div style={{fontSize:9,color:T.textDim,marginTop:2}}>{m.date} · {fmtS(m.duration)}</div></div>
-            <button onClick={()=>del(m.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:15}}>🗑️</button>
+            <div><div style={{fontSize:16,fontWeight:"bold",color:T.text}}>{m.label}</div><div style={{fontSize:13,color:T.textDim,marginTop:2}}>{m.date} · {fmtS(m.duration)}</div></div>
+            <button onClick={()=>del(m.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:17}}>🗑️</button>
           </div>
           <audio controls src={m.url} style={{width:"100%",height:36}}/>
         </Card>
@@ -2502,31 +2502,31 @@ function Receipts({receipts,setReceipts,setExpenses,showToast}) {
       {parsed && (
         <Card accent={T.green} style={{marginBottom:20,border:`1px solid ${T.green}50`}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
-            <div style={{fontSize:24}}>🧾</div>
+            <div style={{fontSize:25}}>🧾</div>
             <div>
-              <div style={{fontSize:13,color:T.green,fontWeight:"bold"}}>Receipt Read by AI</div>
-              <div style={{fontSize:11,color:T.textDim}}>Review and confirm to log to Expenses</div>
+              <div style={{fontSize:17,color:T.green,fontWeight:"bold"}}>Receipt Read by AI</div>
+              <div style={{fontSize:15,color:T.textDim}}>Review and confirm to log to Expenses</div>
             </div>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:14}}>
             <div style={{background:"rgba(74,222,128,0.06)",borderRadius:8,padding:"10px 12px",border:`1px solid ${T.green}20`}}>
-              <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>VENDOR</div>
-              <div style={{fontSize:13,color:T.text,fontWeight:"bold"}}>{parsed.vendor||"—"}</div>
+              <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>VENDOR</div>
+              <div style={{fontSize:17,color:T.text,fontWeight:"bold"}}>{parsed.vendor||"—"}</div>
             </div>
             <div style={{background:"rgba(74,222,128,0.06)",borderRadius:8,padding:"10px 12px",border:`1px solid ${T.green}20`}}>
-              <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>AMOUNT</div>
-              <div style={{fontSize:18,color:T.green,fontWeight:"bold"}}>${parsed.amount||"0.00"}</div>
+              <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>AMOUNT</div>
+              <div style={{fontSize:19,color:T.green,fontWeight:"bold"}}>${parsed.amount||"0.00"}</div>
             </div>
             <div style={{background:"rgba(74,222,128,0.06)",borderRadius:8,padding:"10px 12px",border:`1px solid ${T.green}20`}}>
-              <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>CATEGORY</div>
-              <div style={{fontSize:13,color:T.gold}}>{parsed.category||"Other"}</div>
+              <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>CATEGORY</div>
+              <div style={{fontSize:17,color:T.gold}}>{parsed.category||"Other"}</div>
             </div>
             <div style={{background:"rgba(74,222,128,0.06)",borderRadius:8,padding:"10px 12px",border:`1px solid ${T.green}20`}}>
-              <div style={{fontSize:9,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>DATE</div>
-              <div style={{fontSize:13,color:T.text}}>{parsed.date||today()}</div>
+              <div style={{fontSize:13,color:T.textDim,letterSpacing:1.5,marginBottom:4}}>DATE</div>
+              <div style={{fontSize:17,color:T.text}}>{parsed.date||today()}</div>
             </div>
           </div>
-          <div style={{fontSize:11,color:T.textDim,marginBottom:14,padding:"8px 12px",background:"rgba(255,255,255,0.03)",borderRadius:6}}>{parsed.description||"—"}</div>
+          <div style={{fontSize:15,color:T.textDim,marginBottom:14,padding:"8px 12px",background:"rgba(255,255,255,0.03)",borderRadius:6}}>{parsed.description||"—"}</div>
           <div style={{display:"flex",gap:10}}>
             <Btn onClick={confirmExpense} style={{flex:1}}>✓ Log to Expenses</Btn>
             <Btn onClick={()=>setParsed(null)} variant="ghost" style={{flex:1}}>Dismiss</Btn>
@@ -2544,8 +2544,8 @@ function Receipts({receipts,setReceipts,setExpenses,showToast}) {
             </div>
           </Card>
         : <Card style={{textAlign:"center",padding:28,marginBottom:20}}>
-            <div style={{fontSize:42,marginBottom:8}}>📷</div>
-            <div style={{fontSize:12,color:T.textDim,marginBottom:16}}>Snap or upload a receipt — Summer reads it and fills in your expense automatically</div>
+            <div style={{fontSize:44,marginBottom:8}}>📷</div>
+            <div style={{fontSize:16,color:T.textDim,marginBottom:16}}>Snap or upload a receipt — Summer reads it and fills in your expense automatically</div>
             <div style={{display:"flex",gap:10,justifyContent:"center"}}>
               <Btn onClick={openCam}>📷 Camera</Btn>
               <Btn onClick={()=>fileRef.current.click()} variant="secondary">📂 Upload</Btn>
@@ -2555,21 +2555,21 @@ function Receipts({receipts,setReceipts,setExpenses,showToast}) {
       }
 
       {receipts.length===0 && !parsed && (
-        <div style={{textAlign:"center",color:T.textDim,fontSize:12,padding:40}}>No receipts yet.</div>
+        <div style={{textAlign:"center",color:T.textDim,fontSize:16,padding:40}}>No receipts yet.</div>
       )}
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(180px,1fr))",gap:12}}>
         {receipts.map(r=>(
           <div key={r.id} style={{background:T.surface,border:`1px solid ${scanning===r.id?T.gold:T.border}`,borderRadius:12,overflow:"hidden",position:"relative"}}>
             {scanning===r.id && (
               <div style={{position:"absolute",inset:0,background:"rgba(10,22,40,0.85)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",zIndex:2,borderRadius:12}}>
-                <div style={{fontSize:24,marginBottom:8}}>🤖</div>
-                <div style={{fontSize:11,color:T.gold}}>Reading receipt…</div>
+                <div style={{fontSize:25,marginBottom:8}}>🤖</div>
+                <div style={{fontSize:15,color:T.gold}}>Reading receipt…</div>
               </div>
             )}
             <img src={r.url} alt={r.label} style={{width:"100%",aspectRatio:"4/3",objectFit:"cover",display:"block"}}/>
             <div style={{padding:"8px 10px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-              <div><div style={{fontSize:11,fontWeight:"bold",color:T.text}}>{r.label}</div><div style={{fontSize:9,color:T.textDim,marginTop:2}}>{r.date}</div></div>
-              <button onClick={()=>del(r.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14}}>🗑️</button>
+              <div><div style={{fontSize:15,fontWeight:"bold",color:T.text}}>{r.label}</div><div style={{fontSize:13,color:T.textDim,marginTop:2}}>{r.date}</div></div>
+              <button onClick={()=>del(r.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:18}}>🗑️</button>
             </div>
           </div>
         ))}
@@ -2585,10 +2585,10 @@ function BrandAssets() {
   const palette=[{n:"Dark Navy",h:"#0a1628"},{n:"Navy Mid",h:"#0f1f3d"},{n:"Gold",h:"#f5a623"},{n:"Electric Blue",h:"#3b82f6"},{n:"Flame Orange",h:"#FF4500"},{n:"Warm Text",h:"#e8d5a3"}];
   return (
     <div style={{maxWidth:800}}>
-      <div style={{display:"flex",justifyContent:"center",marginBottom:28}}><div style={{textAlign:"center"}}><SunLogo size={120}/><div style={{fontSize:9,color:T.gold,marginTop:8,letterSpacing:2}}>PRIMARY MARK</div></div></div>
-      <Card style={{marginBottom:16}}><SecTitle>🎨 Brand Palette</SecTitle><div style={{display:"flex",gap:10,flexWrap:"wrap"}}>{palette.map(p=><div key={p.h} style={{textAlign:"center"}}><div style={{width:52,height:52,borderRadius:10,background:p.h,border:"1px solid rgba(255,255,255,0.1)",marginBottom:6}}/><div style={{fontSize:9,color:T.textDim}}>{p.n}</div><div style={{fontSize:8,color:T.textMuted,fontFamily:"monospace"}}>{p.h}</div></div>)}</div></Card>
+      <div style={{display:"flex",justifyContent:"center",marginBottom:28}}><div style={{textAlign:"center"}}><SunLogo size={120}/><div style={{fontSize:13,color:T.gold,marginTop:8,letterSpacing:2}}>PRIMARY MARK</div></div></div>
+      <Card style={{marginBottom:16}}><SecTitle>🎨 Brand Palette</SecTitle><div style={{display:"flex",gap:10,flexWrap:"wrap"}}>{palette.map(p=><div key={p.h} style={{textAlign:"center"}}><div style={{width:52,height:52,borderRadius:10,background:p.h,border:"1px solid rgba(255,255,255,0.1)",marginBottom:6}}/><div style={{fontSize:13,color:T.textDim}}>{p.n}</div><div style={{fontSize:13,color:T.textMuted,fontFamily:"monospace"}}>{p.h}</div></div>)}</div></Card>
       <Card style={{marginBottom:16,border:"1px solid rgba(74,222,128,0.2)"}}><SecTitle>✅ Golden Vocabulary</SecTitle><div style={{display:"flex",flexWrap:"wrap",gap:6}}>{vocab.map(v=><Tag key={v} color={T.green}>{v}</Tag>)}</div></Card>
-      <Card style={{border:"1px solid rgba(248,113,113,0.2)"}}><SecTitle>🚫 Kill List</SecTitle><div style={{display:"flex",flexWrap:"wrap",gap:6}}>{kill.map(v=><span key={v} style={{fontSize:9,background:"rgba(248,113,113,0.08)",border:"1px solid rgba(248,113,113,0.2)",color:T.red,borderRadius:4,padding:"2px 7px",textDecoration:"line-through",letterSpacing:0.5}}>{v}</span>)}</div></Card>
+      <Card style={{border:"1px solid rgba(248,113,113,0.2)"}}><SecTitle>🚫 Kill List</SecTitle><div style={{display:"flex",flexWrap:"wrap",gap:6}}>{kill.map(v=><span key={v} style={{fontSize:13,background:"rgba(248,113,113,0.08)",border:"1px solid rgba(248,113,113,0.2)",color:T.red,borderRadius:4,padding:"2px 7px",textDecoration:"line-through",letterSpacing:0.5}}>{v}</span>)}</div></Card>
     </div>
   );
 }
@@ -2692,20 +2692,20 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
         <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",background:"rgba(245,166,35,0.06)",borderRadius:8,border:`1px solid ${T.border}`,marginBottom:16}}>
           <SummerAvatar size={28}/>
           <div style={{flex:1}}>
-            <div style={{fontSize:12,color:T.gold,fontWeight:"bold"}}>{openAiKey ? VOICE_OPTIONS.find(v=>v.name===selectedVoice)?.label||selectedVoice : "Browser TTS (robot voice)"}</div>
-            <div style={{fontSize:10,color:T.textDim}}>{openAiKey?"Google Cloud TTS — sounds like a real person":"Paste your API key below to unlock Summer's real voice"}</div>
+            <div style={{fontSize:16,color:T.gold,fontWeight:"bold"}}>{openAiKey ? VOICE_OPTIONS.find(v=>v.name===selectedVoice)?.label||selectedVoice : "Browser TTS (robot voice)"}</div>
+            <div style={{fontSize:14,color:T.textDim}}>{openAiKey?"Google Cloud TTS — sounds like a real person":"Paste your API key below to unlock Summer's real voice"}</div>
           </div>
           <Tag color={openAiKey?T.green:T.orange}>{openAiKey?"ACTIVE":"NOT SET"}</Tag>
         </div>
 
         {/* API Key */}
         <div style={{marginBottom:14}}>
-          <div style={{fontSize:11,color:T.textDim,letterSpacing:1.5,marginBottom:6,textTransform:"uppercase"}}>Google Cloud API Key</div>
+          <div style={{fontSize:15,color:T.textDim,letterSpacing:1.5,marginBottom:6,textTransform:"uppercase"}}>Google Cloud API Key</div>
           <div style={{display:"flex",gap:8,alignItems:"center"}}>
             <input value={openAiKey} onChange={e=>{setOpenAiKey(e.target.value);ttsKeyStore.key=e.target.value.trim();}}
               placeholder="AIza..." type={keyVisible?"text":"password"}
-              style={{...fld(),flex:1,fontFamily:"monospace",fontSize:12}}/>
-            <button onClick={()=>setKeyVisible(o=>!o)} style={{background:"none",border:`1px solid ${T.border}`,borderRadius:8,padding:"10px 12px",color:T.textDim,cursor:"pointer",fontSize:12,flexShrink:0}}>
+              style={{...fld(),flex:1,fontFamily:"monospace",fontSize:16}}/>
+            <button onClick={()=>setKeyVisible(o=>!o)} style={{background:"none",border:`1px solid ${T.border}`,borderRadius:8,padding:"10px 12px",color:T.textDim,cursor:"pointer",fontSize:16,flexShrink:0}}>
               {keyVisible?"🙈":"👁"}
             </button>
           </div>
@@ -2713,7 +2713,7 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
 
         {/* Voice Picker */}
         <div style={{marginBottom:14}}>
-          <div style={{fontSize:11,color:T.textDim,letterSpacing:1.5,marginBottom:8,textTransform:"uppercase"}}>Choose Summer's Voice</div>
+          <div style={{fontSize:15,color:T.textDim,letterSpacing:1.5,marginBottom:8,textTransform:"uppercase"}}>Choose Summer's Voice</div>
           <div style={{display:"flex",flexDirection:"column",gap:6}}>
             {VOICE_OPTIONS.map(v=>(
               <div key={v.name} onClick={()=>{setSelectedVoice(v.name);ttsKeyStore.voice=v.name;}}
@@ -2725,8 +2725,8 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
                 }}>
                 <div style={{width:16,height:16,borderRadius:"50%",border:`2px solid ${selectedVoice===v.name?T.gold:T.textDim}`,background:selectedVoice===v.name?T.gold:"transparent",flexShrink:0}}/>
                 <div style={{flex:1}}>
-                  <div style={{fontSize:12,color:selectedVoice===v.name?T.gold:T.text,fontWeight:selectedVoice===v.name?"bold":"normal"}}>{v.label}</div>
-                  <div style={{fontSize:10,color:T.textDim}}>{v.desc}</div>
+                  <div style={{fontSize:16,color:selectedVoice===v.name?T.gold:T.text,fontWeight:selectedVoice===v.name?"bold":"normal"}}>{v.label}</div>
+                  <div style={{fontSize:14,color:T.textDim}}>{v.desc}</div>
                 </div>
               </div>
             ))}
@@ -2742,7 +2742,7 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
         </div>
 
         {!openAiKey && (
-          <div style={{marginTop:12,fontSize:10,color:T.textDim,lineHeight:1.8}}>
+          <div style={{marginTop:12,fontSize:14,color:T.textDim,lineHeight:1.8}}>
             <div style={{marginBottom:4,color:T.gold,fontWeight:"bold"}}>No key? Get one free:</div>
             <div>1. <span style={{color:T.blue}}>console.cloud.google.com</span></div>
             <div>2. New Project → Enable <span style={{color:T.gold}}>Cloud Text-to-Speech API</span></div>
@@ -2754,7 +2754,7 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
 
       <Card>
         <SecTitle>📊 Hub Stats</SecTitle>
-        <div style={{fontSize:12,color:T.textDim,lineHeight:2}}>
+        <div style={{fontSize:16,color:T.textDim,lineHeight:2}}>
           <div>Days live: <span style={{color:T.gold}}>{daysSince}</span></div>
           <div>Open tasks: <span style={{color:T.gold}}>{tasks.filter(t=>!t.done).length}</span></div>
           <div>Inventory SKUs: <span style={{color:T.gold}}>{inventory.length}</span></div>
@@ -2766,12 +2766,12 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
       </Card>
       <Card style={{border:"1px solid rgba(248,113,113,0.2)"}}>
         <SecTitle>⚠️ Danger Zone</SecTitle>
-        <div style={{fontSize:12,color:T.textDim,marginBottom:14,lineHeight:1.6}}>Permanently deletes all Hub data. Cannot be undone.</div>
+        <div style={{fontSize:16,color:T.textDim,marginBottom:14,lineHeight:1.6}}>Permanently deletes all Hub data. Cannot be undone.</div>
         <Btn onClick={clearAll} variant="danger">🗑️ Clear All Hub Data</Btn>
       </Card>
       <Card>
         <SecTitle>ℹ️ Phase 6 — Feature List</SecTitle>
-        <div style={{fontSize:11,color:T.textDim,lineHeight:2}}>
+        <div style={{fontSize:15,color:T.textDim,lineHeight:2}}>
           {[["🤖",T.gold,"Summer AI Chat"],["📰",T.blue,"Daily Briefing (Live Web Search)"],["🎯",T.green,"Goal Tracker"],["⏱️",T.blue,"Drop Countdown Timers"],["📓",T.purple,"Black Book CRM"],["📸",T.orange,"Content Planner"],["📧",T.teal,"Email Writer"],["📋",T.gold,"Report Generator"],["🛍️",T.green,"Shopify Intelligence"],["💵",T.green,"Revenue Tracker"],["📈",T.gold,"P&L Dashboard"],["📅",T.blue,"Campaigns"],["✅",T.gold,"Tasks"],["📦",T.orange,"Inventory"],["🗂️",T.blue,"Orders (Kanban)"],["💰",T.red,"Expenses"],["📝",T.textDim,"Notes"],["🎤",T.gold,"Voice Memos"],["📷",T.blue,"Receipts"],["🌊",T.teal,"Brand Assets"],["🔊",T.gold,"Nova TTS Voice (OpenAI)"]].map(([icon,color,label])=>(
             <div key={label} style={{color}}>{icon} {label}</div>
           ))}
