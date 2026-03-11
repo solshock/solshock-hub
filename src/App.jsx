@@ -1007,7 +1007,7 @@ function SummerChat({revenue,expenses,tasks,inventory,orders,goals,settings}) {
           <div key={i} style={{display:"flex",gap:10,alignItems:"flex-start",flexDirection:m.role==="user"?"row-reverse":"row",animation:"fadeInUp 0.2s ease"}}>
             {m.role==="assistant"&&<SummerAvatar size={30}/>}
             {m.role==="user"&&<div style={{width:30,height:30,borderRadius:"50%",background:T.goldDim,border:`1px solid ${T.border}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,flexShrink:0}}>{settings.ownerName?.[0]||"M"}</div>}
-            <div style={{maxWidth:"75%",padding:"12px 14px",background:m.role==="user"?T.goldDim:T.surface,border:`1px solid ${m.role==="user"?T.gold+"50":T.border}`,borderRadius:m.role==="user"?"12px 12px 4px 12px":"12px 12px 12px 4px",fontSize:20,color:T.text,lineHeight:2.2.0,whiteSpace:"pre-wrap"}}>{m.content}</div>
+            <div style={{maxWidth:"75%",padding:"12px 14px",background:m.role==="user"?T.goldDim:T.surface,border:`1px solid ${m.role==="user"?T.gold+"50":T.border}`,borderRadius:m.role==="user"?"12px 12px 4px 12px":"12px 12px 12px 4px",fontSize:20,color:T.text,lineHeight:2.2,whiteSpace:"pre-wrap"}}>{m.content}</div>
           </div>
         ))}
         {loading&&(
@@ -1205,7 +1205,7 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
                   const isNum=/^\d+\./.test(line.trim());
                   if(!line.trim()) return null;
                   return (
-                    <div key={li} style={{padding:isNum?"12px 14px":"4px 0",background:isNum?"rgba(245,166,35,0.08)":"transparent",borderRadius:isNum?10:0,border:isNum?`1px solid rgba(245,166,35,0.25)`:"none",marginBottom:isNum?10:2,color:isNum?T.gold:T.textDim,fontWeight:isNum?"bold":"normal",fontSize:isNum?13:12,lineHeight:2.2.0,display:"flex",gap:isNum?10:0,alignItems:isNum?"flex-start":"inherit"}}>
+                    <div key={li} style={{padding:isNum?"12px 14px":"4px 0",background:isNum?"rgba(245,166,35,0.08)":"transparent",borderRadius:isNum?10:0,border:isNum?`1px solid rgba(245,166,35,0.25)`:"none",marginBottom:isNum?10:2,color:isNum?T.gold:T.textDim,fontWeight:isNum?"bold":"normal",fontSize:isNum?13:12,lineHeight:2.2,display:"flex",gap:isNum?10:0,alignItems:isNum?"flex-start":"inherit"}}>
                       {line}
                     </div>
                   );
@@ -1219,7 +1219,7 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
       {/* Raw fallback if parsing failed */}
       {briefing&&parsedSections.length===0&&(
         <Card>
-          <div style={{fontSize:20,color:T.text,lineHeight:2.2.15,whiteSpace:"pre-wrap"}}>{briefing}</div>
+          <div style={{fontSize:20,color:T.text,lineHeight:2.2,whiteSpace:"pre-wrap"}}>{briefing}</div>
         </Card>
       )}
 
@@ -1228,7 +1228,7 @@ Write EXACTLY these 7 sections with these EXACT headers (emoji included):
         <Card style={{textAlign:"center",padding:52}}>
           <div style={{fontSize:58,marginBottom:14}}>📰</div>
           <div style={{color:T.text,fontSize:22,fontWeight:"bold",marginBottom:6}}>Your Daily Intelligence Briefing</div>
-          <div style={{color:T.textDim,fontSize:20,marginBottom:20,lineHeight:2.2.0}}>Hit Generate and Summer searches the live web for<br/>everything relevant to SOLSHOCK — updated daily.</div>
+          <div style={{color:T.textDim,fontSize:20,marginBottom:20,lineHeight:2.2}}>Hit Generate and Summer searches the live web for<br/>everything relevant to SOLSHOCK — updated daily.</div>
           <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",marginBottom:24}}>
             {BRIEF_SECTIONS.map(s=>(
               <div key={s.key} style={{fontSize:18,color:s.color,background:`${s.color}12`,border:`1px solid ${s.color}30`,borderRadius:8,padding:"6px 12px",display:"flex",alignItems:"center",gap:4}}>
@@ -1349,7 +1349,7 @@ function Reports({revenue,expenses,orders,tasks,inventory,settings,showToast}) {
               <Btn onClick={()=>setReport(null)} variant="ghost" style={{fontSize:18,padding:"6px 12px"}}>Clear</Btn>
             </div>
           </div>
-          <div style={{fontSize:20,color:T.text,lineHeight:2.2.15,whiteSpace:"pre-wrap"}}>{report}</div>
+          <div style={{fontSize:20,color:T.text,lineHeight:2.2,whiteSpace:"pre-wrap"}}>{report}</div>
         </Card>
       )}
     </div>
@@ -1405,7 +1405,7 @@ function ShopifyDash({settings,showToast}) {
         </Card>
       </div>
       {loading&&<Card style={{textAlign:"center",padding:40}}><div style={{fontSize:37,marginBottom:10}}>🔍</div><div style={{color:T.gold,fontSize:20}}>Analyzing + searching for recommendations…</div></Card>}
-      {analysis&&<Card><SecTitle>🛍️ AI Store Analysis</SecTitle><div style={{fontSize:20,color:T.text,lineHeight:2.2.15,whiteSpace:"pre-wrap"}}>{analysis}</div></Card>}
+      {analysis&&<Card><SecTitle>🛍️ AI Store Analysis</SecTitle><div style={{fontSize:20,color:T.text,lineHeight:2.2,whiteSpace:"pre-wrap"}}>{analysis}</div></Card>}
     </div>
   );
 }
@@ -1543,7 +1543,7 @@ function ContentPlanner({posts,setPosts,showToast}) {
               <button onClick={()=>del(post.id)} style={{background:"none",border:"none",cursor:"pointer",fontSize:20,color:T.textDim}}>🗑️</button>
             </div>
           </div>
-          <div style={{fontSize:20,color:T.text,lineHeight:2.2.0,marginBottom:10,whiteSpace:"pre-wrap"}}>{post.caption}</div>
+          <div style={{fontSize:20,color:T.text,lineHeight:2.2,marginBottom:10,whiteSpace:"pre-wrap"}}>{post.caption}</div>
           <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
             {STATUSES.filter(s=>s!==post.status).map(s=><button key={s} onClick={()=>upStatus(post.id,s)} style={{fontSize:17,padding:"2px 8px",borderRadius:4,border:`1px solid ${SC[s]}50`,background:`${SC[s]}10`,color:SC[s],cursor:"pointer",fontFamily:"Georgia,serif"}}>→ {s}</button>)}
             <button onClick={async()=>{try{await navigator.clipboard.writeText(post.caption);showToast("Caption copied ✓");}catch{}}} style={{fontSize:17,padding:"2px 8px",borderRadius:4,border:`1px solid ${T.border}`,background:"transparent",color:T.textDim,cursor:"pointer",fontFamily:"Georgia,serif"}}>📋 Copy</button>
@@ -1634,7 +1634,7 @@ function BlackBook({contacts,setContacts,showToast}) {
               {selected.phone&&<div style={{fontSize:20,color:T.textDim,marginBottom:6}}>📱 {selected.phone}</div>}
               {selected.lastContact&&<div style={{fontSize:20,color:T.textDim,marginBottom:6}}>📅 Last contact: {selected.lastContact}</div>}
               {selected.tags&&<div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:10}}>{selected.tags.split(",").map(t=><Tag key={t} color={T.blue}>{t.trim()}</Tag>)}</div>}
-              {selected.notes&&<div style={{fontSize:20,color:T.text,lineHeight:2.2.0,background:"rgba(10,22,40,0.5)",padding:12,borderRadius:8,marginBottom:12}}>{selected.notes}</div>}
+              {selected.notes&&<div style={{fontSize:20,color:T.text,lineHeight:2.2,background:"rgba(10,22,40,0.5)",padding:12,borderRadius:8,marginBottom:12}}>{selected.notes}</div>}
               <div style={{display:"flex",gap:8,marginTop:4}}>
                 <Btn onClick={()=>generateOutreach(selected)} disabled={aiLoading} style={{flex:1}} variant="summer">{aiLoading?"⏳ Writing…":"✍️ Draft Outreach"}</Btn>
                 <Btn onClick={()=>del(selected.id)} variant="danger">🗑️</Btn>
@@ -1707,7 +1707,7 @@ function EmailWriter({showToast}) {
               <div style={{fontSize:18,color:T.gold,letterSpacing:2}}>EMAIL BODY</div>
               <Btn onClick={async()=>{try{await navigator.clipboard.writeText(`Subject: ${parts.subject}\n\n${parts.body}`);showToast("Copied ✓");}catch{}}} variant="secondary" style={{fontSize:18,padding:"8px 16px"}}>📋 Copy All</Btn>
             </div>
-            <textarea value={parts.body} onChange={e=>setResult(result.replace(parts.body,e.target.value))} rows={12} style={{...fld(true),lineHeight:2.2.0}}/>
+            <textarea value={parts.body} onChange={e=>setResult(result.replace(parts.body,e.target.value))} rows={12} style={{...fld(true),lineHeight:2.2}}/>
           </Card>
         </div>
       )}
@@ -1775,7 +1775,7 @@ function CopyAI({showToast}) {
               <div style={{fontSize:20,fontWeight:"bold",color:T.gold}}>{lines[0]}</div>
               <Btn onClick={()=>copy(body)} variant="ghost" style={{fontSize:18,padding:"4px 10px"}}>Copy</Btn>
             </div>
-            <div style={{fontSize:20,color:T.text,lineHeight:2.2.1,whiteSpace:"pre-wrap"}}>{body}</div>
+            <div style={{fontSize:20,color:T.text,lineHeight:2.2,whiteSpace:"pre-wrap"}}>{body}</div>
           </Card>
         );
       })}
@@ -2282,7 +2282,7 @@ function Notes({notes,setNotes,showToast}) {
             onChange={e=>setForm(p=>({...p,body:e.target.value}))}
             placeholder="Write, dictate, or snap a photo…"
             rows={10}
-            style={{...fld(),width:"100%",resize:"vertical",fontFamily:"Georgia,serif",lineHeight:2.2.0,boxSizing:"border-box"}}
+            style={{...fld(),width:"100%",resize:"vertical",fontFamily:"Georgia,serif",lineHeight:2.2,boxSizing:"border-box"}}
           />
         </div>
 
@@ -2350,7 +2350,7 @@ function Notes({notes,setNotes,showToast}) {
             </div>
           </div>
           <div style={{fontSize:22,fontWeight:"bold",color:T.text,marginBottom:5}}>{n.title}</div>
-          <div style={{fontSize:20,color:T.textDim,lineHeight:2.2.0}}>{(n.body||"").slice(0,200)}{(n.body||"").length>200?"…":""}</div>
+          <div style={{fontSize:20,color:T.textDim,lineHeight:2.2}}>{(n.body||"").slice(0,200)}{(n.body||"").length>200?"…":""}</div>
           <div style={{fontSize:17,color:T.textMuted,marginTop:8}}>{n.date}</div>
         </Card>
       ))}
@@ -2735,7 +2735,7 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
         </div>
 
         {!openAiKey && (
-          <div style={{marginTop:12,fontSize:18,color:T.textDim,lineHeight:2.2.1}}>
+          <div style={{marginTop:12,fontSize:18,color:T.textDim,lineHeight:2.2}}>
             <div style={{marginBottom:4,color:T.gold,fontWeight:"bold"}}>No key? Get one free:</div>
             <div>1. <span style={{color:T.blue}}>console.cloud.google.com</span></div>
             <div>2. New Project → Enable <span style={{color:T.gold}}>Cloud Text-to-Speech API</span></div>
