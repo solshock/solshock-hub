@@ -37,6 +37,12 @@ const PRIORITIES = ["🔴 High","🟡 Medium","🟢 Low"];
 const NOTE_CATS = ["Decision","Copy Draft","Idea","Task","General"];
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
+// ── ANTHROPIC API KEY ─────────────────────────────────────────────────────────
+const apiKeyStore = { key: "" };
+(async () => {
+  try { const k = localStorage.getItem("ss_anthropic_key"); if (k) apiKeyStore.key = k; } catch {}
+})();
+
 async function callClaude(system, user, useSearch=false) {
   const body = {
     model:"claude-sonnet-4-20250514",
@@ -45,8 +51,14 @@ async function callClaude(system, user, useSearch=false) {
     messages:[{role:"user",content:user}],
   };
   if (useSearch) body.tools = [{type:"web_search_20250305",name:"web_search"}];
+  const headers = { "Content-Type":"application/json" };
+  if (apiKeyStore.key) {
+    headers["x-api-key"] = apiKeyStore.key;
+    headers["anthropic-version"] = "2023-06-01";
+    headers["anthropic-dangerous-allow-browser"] = "true";
+  }
   const res = await fetch("https://api.anthropic.com/v1/messages",{
-    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),
+    method:"POST", headers, body:JSON.stringify(body),
   });
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
@@ -2603,18 +2615,22 @@ const VOICE_OPTIONS = [
 function Settings({settings,setSettings,showToast,tasks,inventory,orders,expenses,revenue}) {
   const [form,setForm]=useState({...settings});
   const [openAiKey,setOpenAiKey]=useState(ttsKeyStore.key||"");
+  const [anthropicKey,setAnthropicKey]=useState(apiKeyStore.key||"");
   const [selectedVoice,setSelectedVoice]=useState(ttsKeyStore.voice||"en-US-Journey-F");
   const [keyVisible,setKeyVisible]=useState(false);
+  const [anthropicVisible,setAnthropicVisible]=useState(false);
   const [testing,setTesting]=useState(false);
 
   const save=async()=>{
     setSettings(form);
     const trimKey = openAiKey.trim();
+    const trimAnthropicKey = anthropicKey.trim();
     ttsKeyStore.key = trimKey;
     ttsKeyStore.voice = selectedVoice;
+    apiKeyStore.key = trimAnthropicKey;
     try { localStorage.setItem("ss_tts_key", trimKey); } catch {}
     try { localStorage.setItem("ss_tts_voice", selectedVoice); } catch {}
-    try { localStorage.setItem("ss_openai_key", trimKey); } catch {}
+    try { localStorage.setItem("ss_anthropic_key", trimAnthropicKey); } catch {}
     showToast("Saved ✓");
   };
 
@@ -2623,6 +2639,7 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
       try {
         const k = localStorage.getItem("ss_tts_key")||""; setOpenAiKey(k); ttsKeyStore.key=k;
         const v = localStorage.getItem("ss_tts_voice")||"en-US-Journey-F"; setSelectedVoice(v); ttsKeyStore.voice=v;
+        const ak = localStorage.getItem("ss_anthropic_key")||""; setAnthropicKey(ak); apiKeyStore.key=ak;
       } catch {}
     })();
   },[]);
@@ -2675,6 +2692,30 @@ function Settings({settings,setSettings,showToast,tasks,inventory,orders,expense
         <Inp label="Revenue Goal ($)" value={form.revenueGoal} onChange={v=>setForm(p=>({...p,revenueGoal:v}))} type="number" placeholder="10000"/>
         <Inp label="Shopify Store URL" value={form.shopifyStore||""} onChange={v=>setForm(p=>({...p,shopifyStore:v}))} placeholder="yourstore.myshopify.com"/>
         <Btn onClick={save} style={{width:"100%",marginTop:4}}>Save Settings</Btn>
+      </Card>
+
+      {/* ── ANTHROPIC API KEY ── */}
+      <Card accent={`${T.blue}40`} style={{border:`1px solid ${anthropicKey?T.blue+"50":T.border}`}}>
+        <SecTitle>🤖 Anthropic API Key</SecTitle>
+        <div style={{padding:"10px 14px",background:"rgba(59,130,246,0.06)",borderRadius:8,border:`1px solid ${T.border}`,marginBottom:16,fontSize:18,color:T.textDim,lineHeight:1.9}}>
+          Required to use <span style={{color:T.gold}}>Summer AI Chat</span>, <span style={{color:T.gold}}>Daily Briefing</span>, <span style={{color:T.gold}}>Copy AI</span>, <span style={{color:T.gold}}>Email Writer</span>, and <span style={{color:T.gold}}>Reports</span> on your live site.
+        </div>
+        <div style={{display:"flex",gap:8,alignItems:"center",marginBottom:12}}>
+          <input value={anthropicKey} onChange={e=>{setAnthropicKey(e.target.value);apiKeyStore.key=e.target.value.trim();}}
+            placeholder="sk-ant-..." type={anthropicVisible?"text":"password"}
+            style={{...fld(),flex:1,fontFamily:"monospace",fontSize:16}}/>
+          <button onClick={()=>setAnthropicVisible(o=>!o)} style={{background:"none",border:`1px solid ${T.border}`,borderRadius:8,padding:"10px 12px",color:T.textDim,cursor:"pointer",fontSize:16,flexShrink:0}}>
+            {anthropicVisible?"🙈":"👁"}
+          </button>
+        </div>
+        <div style={{fontSize:16,color:T.textDim,lineHeight:1.9,marginBottom:14}}>
+          <div style={{color:T.gold,fontWeight:"bold",marginBottom:4}}>Get your key:</div>
+          <div>1. Go to <span style={{color:T.blue}}>console.anthropic.com</span></div>
+          <div>2. Settings → API Keys → Create Key</div>
+          <div>3. Paste above → Save 🌊</div>
+        </div>
+        {anthropicKey && <div style={{padding:"8px 12px",background:"rgba(74,222,128,0.08)",border:`1px solid ${T.green}30`,borderRadius:8,fontSize:16,color:T.green,marginBottom:12}}>✓ API key set — all AI features active</div>}
+        <Btn onClick={save} style={{width:"100%"}}>💾 Save API Key</Btn>
       </Card>
 
       {/* ── VOICE SETTINGS ── */}
