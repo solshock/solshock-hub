@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import MockupStudio from './MockupStudio';
 
 const T = {
   navy:"#0a1628",navyMid:"#0f1f3d",navyLight:"#162848",navyGlass:"rgba(15,31,61,0.85)",
@@ -384,6 +385,7 @@ function Toast({msg,type}) {
 
 const NAV = [
   {id:"dashboard",icon:"☀️", label:"Dashboard",      group:"core"},
+  {id:"mockup",   icon:"📸", label:"Mockup Studio",  group:"core"},
   {id:"summer",   icon:"🤖", label:"Summer AI",       group:"core"},
   {id:"briefing", icon:"📰", label:"Briefing",        group:"core"},
   {id:"revenue",  icon:"💵", label:"Revenue",         group:"biz"},
@@ -625,6 +627,7 @@ export default function App() {
 
         <div style={{flex:1,overflowY:"auto",padding:"22px 22px 60px",fontSize:24}}>
           {tab==="dashboard"  && <Dashboard {...allData} {...p}/>}
+          {tab==="mockup"     && <MockupStudio />}
           {tab==="summer"     && <SummerChat {...allData} {...p}/>}
           {tab==="briefing"   && <Briefing tasks={tasks} inventory={inventory} orders={orders} revenue={revenue} settings={settings}/>}
           {tab==="revenue"    && <Revenue revenue={revenue} setRevenue={setRevenue} expenses={expenses} goals={goals} {...p}/>}
