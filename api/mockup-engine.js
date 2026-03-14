@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const { images, sceneType } = req.body || {};
 
     // 1. THE VOICE: Gemini 1.5 Pro for Copy
-    const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const textModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
     const copyPrompt = `
       You are Summer, SOLSHOCK'S AI strategist. Write a product description for a piece in this setting: ${sceneType || 'Coastal'}.
       Strictly follow Rule 7:
