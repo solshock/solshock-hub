@@ -6,7 +6,7 @@ export default function MockupStudio() {
   const [gallery, setGallery] = useState([]);
   const [copy, setCopy] = useState("");
 
-  const handleRunShoot = async () => {
+ const handleRunShoot = async () => {
     const logoFiles = document.getElementById('logoUpload').files;
     const summerFiles = document.getElementById('summerReference').files;
 
@@ -45,12 +45,11 @@ export default function MockupStudio() {
 
       const result = await response.json();
 
-if (result.copy) {
+      if (result.copy) {
         setGallery(result.mockups || []);
         setCopy(result.copy);
       } else {
         alert("Engine failed to return copy.");
-      }
       }
     } catch (error) {
       console.error(error);
