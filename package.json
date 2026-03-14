@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    { model: "gemini-2.0-flash-001" }
+    "@google/generative-ai": "^0.21.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
