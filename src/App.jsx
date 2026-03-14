@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import MockupStudio from './MockupStudio';
+import MockupStudio from './MockupStudio.jsx';
 
 const T = {
   navy:"#0a1628",navyMid:"#0f1f3d",navyLight:"#162848",navyGlass:"rgba(15,31,61,0.85)",
