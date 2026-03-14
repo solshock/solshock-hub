@@ -45,11 +45,12 @@ export default function MockupStudio() {
 
       const result = await response.json();
 
-      if (result.success) {
-        setGallery(result.images);
+if (result.copy) {
+        setGallery(result.mockups || []);
         setCopy(result.copy);
       } else {
-        alert("Engine failed.");
+        alert("Engine failed to return copy.");
+      }
       }
     } catch (error) {
       console.error(error);
